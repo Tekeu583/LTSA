@@ -1,8 +1,8 @@
 <?php
 define('DB_HOST', 'localhost');
-define('DB_USER', 'kenfack');
-define('DB_PASS', 'pass123');
-define('DB_NAME', 'ltsa');
+define('DB_USER', 'your_username');// à remplacer
+define('DB_PASS', 'yourpassword');// à remplacer
+define('DB_NAME', 'ltsa');// à remplacer si neccesaire
 
 
 function connectDB (){        
