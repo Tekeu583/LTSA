@@ -55,21 +55,31 @@ ob_start();
     </div>
 
     <!-- Titre de la section des parcours d'etude -->
-    <div class="text-center my-4">
+    <div class="text-center my-2">
         <p style="font-family: 'Times New Roman', Times, serif; font-size: 24px;text-decoration: underline; text-decoration-color: #FFB523; text-underline-offset: 5px;font-weight: bold; font-style: italic;">
         Parcours d’étude pour les étudiants de Master et Doctorat/PhD
         </p>
     </div>
-    <div class="text-center my-4">
+    <div class="text-center my-3">
         <p style="font-family: 'Times New Roman', Times, serif; font-size: 24px;font-weight: bold; font-style: italic;">
         Année Académique 2024/2025
         </p>
     </div>
-    <div class="text-center my-4">
-        <p style="font-family: 'Times New Roman', Times, serif; font-size: 24px;text-decoration: underline; text-decoration-color: #FFB523; text-underline-offset: 5px;font-weight: bold; font-style: italic;">
-        Cycle de Master 2 Recherche
-        </p>
+<div class="d-flex justify-content-end align-items-center my-0">
+  <!-- Ellipse bleue avec flèche vers le haut -->
+    <div class="d-flex justify-content-center align-items-center rounded-circle"style="background-color: #110CFF; width: 30px; height: 30px;">
+    <i class="bi bi-arrow-up text-white" style="font-size: 16px;"></i>
     </div>
+</div>
+<div class="text-center my-5">
+  <!-- "Cycle de Master 2 Recherche" -->
+  <p style="font-family: 'Times New Roman', Times, serif; font-size: 24px; text-decoration: underline; text-decoration-color: #FFB523; text-underline-offset: 5px; font-weight: bold; font-style: italic; margin: 0;">
+    Cycle de Master 2 Recherche
+  </p>
+</div>
+
+
+
 
 
     <!-- Parcours ÉNERGÉTIQUE -->
@@ -843,3 +853,15 @@ ob_start();
 $content=ob_get_clean();
 require("template.php");
 ?>
+
+
+
+     
+
+
+
+
+
+     
+
+
