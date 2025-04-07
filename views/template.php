@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/color.css">
     <link rel="stylesheet" href="../css/bootstrap-grid.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
 </head>
 <body>
     <div class="container-fluid">
