@@ -3,13 +3,7 @@ ob_start();
 ?>
 
 <p>
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grille de Recherches</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+   
     <style>
         /* ----- Section 1 : Bannière bleue ----- */
         .hero-banner {
@@ -128,78 +122,102 @@ ob_start();
             
             <!-- Menu déroulant cliquable -->
             <div class="title-dropdown" id="titleDropdown">
-                <a href="#visionparordinateur" class="dropdown-item">Vision par ordinateur et reconnaissance des formes</a>
-                <a href="#apprentissage" class="dropdown-item">Apprentissage profond</a>
-                <a href="#sciences humaines" class="dropdown-item">Sciences humaines numeriques</a>
-                <a href="#machine" classe="dropdown-item">Interaction homme-machine</a>
-                <a href="#medias" class="dropdown-item">Analse des medias sociaux</a>
-                <a href="#projets" class="dropdown-item">Projets</a>
+                <a href="#vision" class="dropdown-item">Vision par ordinateur et reconnaissance des formes</a>
+                <a href="#domaines" class="dropdown-item">Domaines de recherches</a>
+                <a href="#mecanique" class="dropdown-item">Mecanique</a>
+                <a href="#genigeo" classe="dropdown-item">Génie Civil et Géotechnologie</a>
+                <a href="#elec" class="dropdown-item">Electronique, Electrotechnique etc</a>
+                <a href="#energetique" class="dropdown-item">Energetique</a>
+            </div>
+        </div>
+                </div>
+            </div>
+            
+         <!-- Section 1 - Vision et positionnement scientifique -->
+<!-- Section 1 - Vision et positionnement scientifique -->
+<div class="research-item" id="vision">
+    <h3><span class="badge bg-primary me-2">🔭</span> Vision et positionnement scientifique</h3>
+    <div class="research-description">
+        <!-- Contenu inchangé -->
+    </div>
+</div>
+
+<!-- Section 2 - Domaines de recherche -->
+<div class="research-item" id="domaines">
+    <h3><span class="badge bg-primary me-2">🧪</span> Domaines de recherche</h3>
+    <div class="research-description">
+        <p class="domain-intro">Le LTSA développe des recherches appliquées dans quatre spécialités scientifiques majeures :</p>
+        
+        <!-- Domaine 1 - Mécanique -->
+        <div class="research-item" id="mecanique">
+            <h3><span class="badge bg-primary me-2">⚙️</span> Mécanique</h3>
+            <div class="research-description">
+                <p>Notre département mécanique se concentre sur :</p>
+                <ul>
+                    <li>Conception et modélisation des systèmes mécaniques</li>
+                    <li>Analyse des performances et fiabilité</li>
+                    <li>Maintenance prédictive et amélioration continue</li>
+                </ul>
+                <p>Nos recherches visent à développer des solutions mécaniques adaptées aux besoins industriels locaux.</p>
             </div>
         </div>
         
-        <!-- Section 3 : Contenu avec ancres -->
-        <div class="research-content">
-            <!-- Item 1 -->
-            <div class="research-item" id="visionparordinateur">
-                <h3>Vision par ordinateur et reconnaissance des formes</h3>
-                <div class="research-description">
-                    <p>je me rappele que le cntenu doit etre charge en back-end.</p>
-                    <!-- genre text et image ou video correspondantes -->
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        <!-- Domaine 2 - Génie Civil et Géotechnologie -->
+        <div class="research-item" id="genigeo">
+            <h3><span class="badge bg-primary me-2">🏗️</span> Génie Civil et Géotechnologie</h3>
+            <div class="research-description">
+                <p>Face aux défis du changement climatique et de l'urbanisation, notre département développe :</p>
+                <ul>
+                    <li>Des méthodes avancées d'évaluation des risques naturels</li>
+                    <li>Des techniques innovantes de collecte et traitement de données géotechniques</li>
+                    <li>Des modèles numériques pour l'aménagement territorial résilient</li>
+                </ul>
+                <div class="research-focus">
+                    <span style="color: #ffa500;"><h5>Zones d'étude :</h5></span>
+                    <p>Nos travaux couvrent l'atmosphère, les surfaces continentales, les zones marines côtières et le subsurface, avec une attention particulière sur la gestion intégrée des ressources en eau.</p>
                 </div>
             </div>
-            
-            <!-- Item 2 -->
-            <div class="research-item" id="Apprentissane">
-                <h3>Apprentissage profond</h3>
-                <div class="research-description">
-                    <p>Contenu chargé dynamiquement ici...</p>
-                    <!-- Exemple de vidéo -->
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
+        </div>
+        
+        <!-- Domaine 3 - Electronique et Télécoms -->
+        <div class="research-item" id="elec">
+            <h3><span class="badge bg-primary me-2">📡</span> Electronique, Electrotechnique, Automatique et Télécommunications</h3>
+            <div class="research-description">
+                <p>Ce département pluridisciplinaire couvre :</p>
+                <div class="subdomains">
+                    <div class="subdomain">
+                        <h5>Conception électronique :</h5>
+                        <p>Prototypage matériel et logiciel de systèmes instrumentaux avancés</p>
+                    </div>
+                    <div class="subdomain">
+                        <h5>Énergie et automatisme :</h5>
+                        <p>Optimisation des systèmes électriques et commande avancée</p>
+                    </div>
+                    <div class="subdomain">
+                        <h5>Traitement du signal :</h5>
+                        <p>Techniques innovantes d'acquisition et traitement d'images</p>
+                    </div>
                 </div>
+                <p class="impact-statement">Nos recherches contribuent notamment au développement de solutions énergétiques durables basées sur les énergies renouvelables.</p>
             </div>
-            
-            <!-- Item 3 -->
-            <div class="research-item" id="Science humaines">
-                <h3>Sciences humaines numeriques</h3>
-                <div class="research-description">
-                    <p>Contenu chargé dynamiquement ici...</p>
-
-                    <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-                </div>
+        </div>
+        
+        <!-- Domaine 4 - Energétique -->
+        <div class="research-item" id="energetique">
+            <h3><span class="badge bg-primary me-2">⚡</span> Energétique</h3>
+            <div class="research-description">
+                <p>Nos travaux en énergétique s'articulent autour de trois axes :</p>
+                <ol>
+                    <li>Conception de systèmes énergétiques optimisés</li>
+                    <li>Modélisation des flux énergétiques complexes</li>
+                    <li>Prospective énergétique et scénarios de transition</li>
+                </ol>
+                <p>Nous développons des solutions adaptées au contexte africain, combinant efficacité énergétique et accessibilité.</p>
             </div>
-
- <!-- Item 4 -->
- <div class="research-item" id="machine">
-    <h3>Interaction Homme-machine</h3>
-    <div class="research-description">
-        <p>Contenu chargé dynamiquement ici...</p>
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-    </div>
-
         </div>
-
-<!-- Item 5 -->
-<div class="research-item" id="medias">
-    <h3>Analyse des medias sociaux</h3>
-    <div class="research-description">
-        <p>Contenu chargé dynamiquement ici...</p>
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
     </div>
+</div>
 
-        </div>
-
-<!-- Item 6 -->
-<div class="research-item" id="Projets">
-    <h3>Projets</h3>
-    <div class="research-description">
-        <p>Contenu chargé dynamiquement ici...</p>
-        <iframe width="100%" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-        </div>
-
-    </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -287,12 +305,6 @@ ob_start();
         });
     });
 </script>
-
-
-</body>
-</html>
-</h1>
-
 <?php
 $content=ob_get_clean();
 require("template.php");
