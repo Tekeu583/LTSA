@@ -1,4 +1,7 @@
 <?php
+
+ob_start();
+
 $page_title = "Cours par spécialité";
 ?>
 <div class="row" >
@@ -37,3 +40,7 @@ $page_title = "Cours par spécialité";
     </div>
     <?php endif; ?>
 </div>
+<?php
+    $content= ob_get_clean();
+    require "template.php";
+?>

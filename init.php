@@ -21,7 +21,7 @@ function  initializeDatabase (){
         echo "<br>";
         if($query->rowCount() == 0){
             echo "La base de données '$dbName' n'existe pas, création de la base de données...<br>";
-            $db->exec("CREATE DATABASE $dbName CHARACTER SET utf8 COLLATE utf8_general_ci");
+            $db->exec("CREATE DATABASE $dbName CHARACTER SET utf8 COLLATE utf8mb4_general_ci");
             echo "Base de données '$dbName' créée avec succès<br>";
         }else{
             echo "la bd exise déjà.<br>";

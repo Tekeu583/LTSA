@@ -1,7 +1,7 @@
 <?php
 define('DB_HOST', 'localhost');
-define('DB_USER', 'your_username');// à remplacer
-define('DB_PASS', 'yourpassword');// à remplacer
+define('DB_USER', 'root');// à remplacer par le nom du serveur
+define('DB_PASS', '');// à remplacer
 define('DB_NAME', 'ltsa');// à remplacer si neccesaire
 
 

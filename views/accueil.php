@@ -1,8 +1,7 @@
 <?php 
 ob_start();
 ?>
-
-<style type="text/css" id="dcoder_stylesheet">/* Définition des couleurs */
+    <style type="text/css" id="dcoder_stylesheet">/* Définition des couleurs */
       :root {
         --color-bleu-clair: #323597; /* Adjusted to match image */
         --color-bleu-fonce: #211F59;
@@ -431,16 +430,16 @@ ob_start();
     </style>
 
   <section id="presentation"> 
-   <div> 
-    <div id="texte_presentation"> 
-     <h2>BIENVENUE AU LTSA</h2> 
-     <h6><span class="accolade">"</span>Explorer, innover, transformer le futur de la science et de la technologie<span class="accolade">"</span></h6> 
-     <p class="paragraphe"> Le LTSA créé en 2017 est un laboratoire de recherche appartenant à l'Unité de formation Doctorale Sciences Appliquées (UFD-SCA) de l'Ecole Doctorale de des <br>Sciences Fondamentales et Appliquées (ADOSFA) de l'Université de Douala (Udo).<br> Il est hébergé à l'Institut Universitaire de Technologie (IUT) de Douala et bénéficie gracieusement des infrastructures de cet illustre établissement de l'Université de Douala. <br>La promotion 2020-2021 en est la 3ème cuvée sortie de ce Labo.<br> La Coordination du LTSA est Assurée par le Pr DJANNA KOFFI Francis Lénine et secondé par le Pr Vishiti AKUMBOM. </p> 
-     <div class="savoir-plus-container"> 
-      <img src="https://i.postimg.cc/50V0t7kB/fleche-droite.png" alt="icône"> <a class="texte_petit">Savoir plus</a> 
-     </div> 
+    <div> 
+        <div id="texte_presentation"> 
+          <h2>BIENVENUE AU LTSA</h2> 
+          <h6><span class="accolade">"</span>Explorer, innover, transformer le futur de la science et de la technologie<span class="accolade">"</span></h6> 
+          <p class="paragraphe"> Le LTSA créé en 2017 est un laboratoire de recherche appartenant à l'Unité de formation Doctorale Sciences Appliquées (UFD-SCA) de l'Ecole Doctorale de des <br>Sciences Fondamentales et Appliquées (ADOSFA) de l'Université de Douala (Udo).<br> Il est hébergé à l'Institut Universitaire de Technologie (IUT) de Douala et bénéficie gracieusement des infrastructures de cet illustre établissement de l'Université de Douala. <br>La promotion 2020-2021 en est la 3ème cuvée sortie de ce Labo.<br> La Coordination du LTSA est Assurée par le Pr DJANNA KOFFI Francis Lénine et secondé par le Pr Vishiti AKUMBOM. </p> 
+          <div class="savoir-plus-container"> 
+            <img src="https://i.postimg.cc/50V0t7kB/fleche-droite.png" alt="icône"> <a class="texte_petit">Savoir plus</a> 
+          </div> 
+        </div> 
     </div> 
-   </div> 
   </section> 
   <section id="carreaux_presentation"> 
    <div class="stats-section"> 
@@ -519,6 +518,7 @@ ob_start();
      </div> 
     </div> 
    </section> </b> 
+ 
 <?php
 $content=ob_get_clean();
 require("template.php");
