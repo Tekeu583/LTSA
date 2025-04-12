@@ -200,5 +200,7 @@ class SpecialiteController {
         header("Location: /admin/specialite?id=" . ($_GET['id'] ??  '1'));
         exit;
     }
+
+    
 }
 ?>

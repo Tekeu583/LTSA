@@ -149,30 +149,6 @@ CREATE TABLE genieMecanique(
 )ENGINE=InnoDB;
 
 
-#------------------------------------------------------------
-# Table: genieMecanique
-#------------------------------------------------------------
-
-CREATE TABLE genieMecanique(
-        id         Int  Auto_increment  NOT NULL ,
-        codeEc     Varchar (20) NOT NULL ,
-        intituleEc Varchar (50) NOT NULL ,
-        coef       Int NOT NULL ,
-        CM         Int NOT NULL ,
-        TD         Int NOT NULL ,
-        TP         Int NOT NULL ,
-        TPE        Int NOT NULL ,
-        CCTS       Int NOT NULL ,
-        id_admin   Int NOT NULL
-	,CONSTRAINT genieMecanique_PK PRIMARY KEY (id)
-
-	,CONSTRAINT genieMecanique_admin_FK FOREIGN KEY (id_admin) REFERENCES admin(id)
-)ENGINE=InnoDB;
-
-
-#------------------------------------------------------------
-# Table: geoscience
-#------------------------------------------------------------
 
 CREATE TABLE geoscience(
         id         Int  Auto_increment  NOT NULL ,
