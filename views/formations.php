@@ -30,7 +30,7 @@ ob_start();
     </div>
     </div>
 
-    <div class="container my-4">
+    <div class="container my-4 ">
         <p class="fs-5" style="font-family: 'Times New Roman', Times, serif;font-size:18px">
          Ces formations mettent l’accent sur quatre (04) grandes spécialités :
         </p>
@@ -55,21 +55,31 @@ ob_start();
     </div>
 
     <!-- Titre de la section des parcours d'etude -->
-    <div class="text-center my-4">
+    <div class="text-center my-2">
         <p style="font-family: 'Times New Roman', Times, serif; font-size: 24px;text-decoration: underline; text-decoration-color: #FFB523; text-underline-offset: 5px;font-weight: bold; font-style: italic;">
         Parcours d’étude pour les étudiants de Master et Doctorat/PhD
         </p>
     </div>
-    <div class="text-center my-4">
+    <div class="text-center my-3">
         <p style="font-family: 'Times New Roman', Times, serif; font-size: 24px;font-weight: bold; font-style: italic;">
         Année Académique 2024/2025
         </p>
     </div>
-    <div class="text-center my-4">
-        <p style="font-family: 'Times New Roman', Times, serif; font-size: 24px;text-decoration: underline; text-decoration-color: #FFB523; text-underline-offset: 5px;font-weight: bold; font-style: italic;">
-        Cycle de Master 2 Recherche
-        </p>
+<div class="d-flex justify-content-end align-items-center my-0">
+  <!-- Ellipse bleue avec flèche vers le haut -->
+    <div class="d-flex justify-content-center align-items-center rounded-circle"style="background-color: #110CFF; width: 30px; height: 30px;">
+    <i class="bi bi-arrow-up text-white" style="font-size: 16px;"></i>
     </div>
+</div>
+<div class="text-center my-5">
+  <!-- "Cycle de Master 2 Recherche" -->
+  <p style="font-family: 'Times New Roman', Times, serif; font-size: 24px; text-decoration: underline; text-decoration-color: #FFB523; text-underline-offset: 5px; font-weight: bold; font-style: italic; margin: 0;">
+    Cycle de Master 2 Recherche
+  </p>
+</div>
+
+
+
 
 
     <!-- Parcours ÉNERGÉTIQUE -->
@@ -79,46 +89,51 @@ ob_start();
     </div>
     </section>
     <!-- Carte avec bordure arrondie -->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Traitement de signal</span></p>
+        <div class="border-secondary rounded-pill p-4 mt-3 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Traitement de signal</span></p>
+        <div class="text-start"> 
             Crédit : 3<br>
             Code EC : TSATRC911 <br>
             Master 2 Recherche : Énergétique<br>
             Génie Civil ; Génie Mécanique ; Électronique, Automatique et Télécommunication<br>
             Semestre 9 & 10
         </div>
+        </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-            <p><span class="text-primary"style="font-weight: bold; font-family: inter;">Méthodes experimentales</span></p>
+        <div class="border-secondary rounded-pill p-4 mt-3 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Méthodes experimentales</span></p>
+        <div class="text-start">
             Crédit : 3<br>
             Code EC : TSATRC912 <br>
             Master 2 Recherche : Énergétique<br>
             Génie Civil ; Génie Mécanique ; Électronique, Automatique et Télécommunication<br>
             Semestre 9 & 10
         </div>
+        </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Méthodes numériques</span></p>
-            Crédit : 3 <br>
+        <div class="border-secondary rounded-pill p-4 mt-3 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Méthodes numériques</span></p>
+        <div class="text-start">Crédit : 3 <br>
             Code EC : TSATRC913 <br>
             Master 2 Recherche : Énergétique <br>
             Génie Civil ; Génie Mécanique ; Électronique, Automatique et Télécommunication <br>
             Semestre 9 & 10
         </div>
+        </div>
     </div>
 </div>
 </div>
 <!-- 2è ligne-->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Initiation à la recherche</span></p>
+        <div class="border-secondary rounded-pill p-4 mt-3 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Initiation à la recherche</span></p>
             Crédit : 3<br>
             Code EC : TSATRC914 <br>
             Master 2 Recherche : Énergétique<br>
@@ -127,8 +142,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-            <p><span class="text-primary"style="font-weight: bold; font-family: inter;">Technologies des Energies conventionnelles</span></p>
+        <div class="border-secondary rounded-pill p-4 mt-3 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Technologies des Energies conventionnelles</span></p>
             Crédit : 3<br>
             Code EC : TSAENE921 <br>
             Master 2 Recherche : Énergétique<br>
@@ -136,8 +151,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Technologies des Energies renouvelables</span></p>
+        <div class="border-secondary rounded-pill p-4 mt-3 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Technologies des Energies renouvelables</span></p>
             Crédit : 4<br>
             Code EC : TSAENE922 <br>
             Master 2 Recherche : Énergétique <br>
@@ -147,11 +162,11 @@ ob_start();
 </div>
 </div>
 <!-- 3è ligne-->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Géopolitique Energétique et Développement Durable</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Géopolitique Energétique et Développement Durable</span></p>
             Crédit : 3<br>
             Code EC : TSATRC923 <br>
             Master 2 Recherche : Énergétique<br>
@@ -159,8 +174,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-            <p><span class="text-primary"style="font-weight: bold; font-family: inter;">Transferts de chaleurs appliqués</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Transferts de chaleurs appliqués</span></p>
             Crédit : 4<br>
             Code EC : TSAENE931<br>
             Master 2 Recherche : Énergétique<br>
@@ -168,8 +183,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Simulation des systèmes Energétiques</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Simulation des systèmes Energétiques</span></p>
             Crédit : 4<br>
             Code EC : TSAENE932<br>
             Master 2 Recherche : Énergétique <br>
@@ -179,11 +194,11 @@ ob_start();
 </div>
 </div>
 <!-- 4è ligne-->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-left">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Rédaction et Soutenance du Mémoire</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Rédaction et Soutenance du Mémoire</span></p>
             Crédit : 30<br>
             Code EC : TSAMEM101 <br>
             Master 2 Recherche : Énergétique<br>
@@ -200,11 +215,11 @@ ob_start();
     </div>
     </section>
     <!-- Carte avec bordure arrondie -->
-<div class="container my-4">
+    <div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Traitement du signal</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Traitement du signal</span></p>
             Crédit : 3<br>
             Code EC : TSATRC911<br>
             Master 2 Recherche : Énergétique<br>
@@ -213,8 +228,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-            <p><span class="text-primary"style="font-weight: bold; font-family: inter;">Méthodes expérimentales</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Méthodes expérimentales</span></p>
             Crédit : 3<br>
             Code EC : TSATRC912<br>
             Master 2 Recherche : Énergétique<br>
@@ -223,8 +238,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Méthodes numériques</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Méthodes numériques</span></p>
             Crédit : 3 <br>
             Code EC : TSATRC913<br>
             Master 2 Recherche : Énergétique <br>
@@ -234,11 +249,11 @@ ob_start();
     </div>
 </div>
 <!-- 2è ligne -->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Initiation à la recherche</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Initiation à la recherche</span></p>
             Crédit : 3<br>
             Code EC : TSATRC914<br>
             Master 2 Recherche : Énergétique<br>
@@ -247,8 +262,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-            <p><span class="text-primary"style="font-weight: bold; font-family: inter;">Calcul non linéaire</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Calcul non linéaire</span></p>
             Crédit : 3<br>
             Code EC : TSAGCI921<br>
             Master 2 Recherche : Énergétique<br>
@@ -257,8 +272,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Modélisation des hydro systèmess</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Modélisation des hydro systèmess</span></p>
             Crédit : 4<br>
             Code EC : TSAGCI922<br>
             Master 2 Recherche : Génie Civil<br>
@@ -268,11 +283,11 @@ ob_start();
 </div>
 </div>
 <!-- 3è ligne -->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Matériaux</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Matériaux</span></p>
             Crédit : 3<br>
             Code EC : TSAGCI923<br>
             Master 2 Recherche : Énergétique<br>
@@ -281,8 +296,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-            <p><span class="text-primary"style="font-weight: bold; font-family: inter;">Gestion Base des données géographiques</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Gestion Base des données géographiques</span></p>
             Crédit : 4<br>
             Code EC : TSAGCI931<br>
             Master 2 Recherche : Génie Civil<br>
@@ -290,8 +305,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Sécurité des réseaux des transports terrestres et maritimes</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Sécurité des réseaux des transports terrestres et maritimes</span></p>
             Crédit : 4<br>
             Code EC : TSAGCI932<br>
             Master 2 Recherche : Génie Civil<br>
@@ -301,11 +316,11 @@ ob_start();
 </div>
 </div>
 <!-- 4è ligne -->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-leftr">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Rédaction et Soutenance du Mémoire</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Rédaction et Soutenance du Mémoire</span></p>
             Crédit : 30<br>
             Code EC : TSAMEM101<br>
             Master 2 Recherche : Énergétique<br>
@@ -322,11 +337,11 @@ ob_start();
     </div>
     </section>
     <!-- Carte avec bordure arrondie -->
-<div class="container my-4">
+    <div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Traitement de signal</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Traitement de signal</span></p>
             Crédit : 3<br>
             Code EC : TSATRC911<br>
             Master 2 Recherche : Énergétique<br>
@@ -335,8 +350,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-            <p><span class="text-primary"style="font-weight: bold; font-family: inter;">Méthodes expérimentales</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Méthodes expérimentales</span></p>
             Crédit : 3<br>
             Code EC : TSATRC912<br>
             Master 2 Recherche : Énergétique<br>
@@ -345,8 +360,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Méthodes numériques</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Méthodes numériques</span></p>
             Crédit : 3 <br>
             Code EC : TSATRC913<br>
             Master 2 Recherche : Énergétique <br>
@@ -357,11 +372,11 @@ ob_start();
 </div>
 </div>
 <!-- 2è ligne -->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Initiation à la recherche</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Initiation à la recherche</span></p>
             Crédit : 3<br>
             Code EC : TSATRC911<br>
             Master 2 Recherche : Énergétique<br>
@@ -370,8 +385,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-            <p><span class="text-primary"style="font-weight: bold; font-family: inter;">Mécanique des milieux continus</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Mécanique des milieux continus</span></p>
             Crédit : 3<br>
             Code EC : TSATRC912<br>
             Master 2 Recherche : Énergétique<br>
@@ -380,8 +395,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Ecoulement des fluides réels</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Ecoulement des fluides réels</span></p>
             Crédit : 4<br>
             Code EC : TSATRC913<br>
             Master 2 Recherche : Énergétique <br>
@@ -392,11 +407,11 @@ ob_start();
 </div>
 </div>
 <!-- 3è ligne -->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Aérodynamique</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Aérodynamique</span></p>
             Crédit : 3<br>
             Code EC : TSAMEC923<br>
             Master 2 Recherche : Énergétique<br>
@@ -405,8 +420,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-            <p><span class="text-primary"style="font-weight: bold; font-family: inter;">Transferts de chaleur en milieu réactionnaire</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Transferts de chaleur en milieu réactionnaire</span></p>
             Crédit : 3<br>
             Code EC : TSAMEC931<br>
             Master 2 Recherche : Énergétique<br>
@@ -415,8 +430,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Thermomécanique</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Thermomécanique</span></p>
             Crédit : 4 <br>
             Code EC : TSATRC932<br>
             Master 2 Recherche : Énergétique <br>
@@ -427,11 +442,11 @@ ob_start();
 </div>
 </div>
 <!-- 4è ligne -->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-left">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Rédaction et Soutenance du Mémoire</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Rédaction et Soutenance du Mémoire</span></p>
             Crédit : 30<br>
             Code EC : TSAMEC923<br>
             Master 2 Recherche : Énergétique<br>
@@ -449,11 +464,11 @@ ob_start();
     </div>  
     </section>
     <!-- Carte avec bordure arrondie -->
-<div class="container my-4">
+    <div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Traitement de signal</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Traitement de signal</span></p>
             Crédit : 3<br>
             Code EC : TSATRC911<br>
             Master 2 Recherche : Énergétique<br>
@@ -462,8 +477,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-            <p><span class="text-primary"style="font-weight: bold; font-family: inter;">Méthodes expérimentales</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Méthodes expérimentales</span></p>
             Crédit : 3<br>
             Code EC : TSATRC912<br>
             Master 2 Recherche : Énergétique<br>
@@ -472,8 +487,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Méthodes numériques</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Méthodes numériques</span></p>
             Crédit : 3 <br>
             Code EC : TSATRC913<br>
             Master 2 Recherche : Énergétique <br>
@@ -484,11 +499,11 @@ ob_start();
 </div>
 </div>
 <!-- 2è ligne -->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Initiation à la recherche</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Initiation à la recherche</span></p>
             Crédit : 3<br>
             Code EC : TSATRC911<br>
             Master 2 Recherche : Électronique, Automatique et Télécommunication<br>
@@ -496,8 +511,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-            <p><span class="text-primary"style="font-weight: bold; font-family: inter;">Automatique</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Automatique</span></p>
             Crédit : 3<br>
             Code EC : TSAEEA921<br>
             Master 2 Recherche : Électronique, Automatique et Télécommunication<br>
@@ -505,8 +520,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Modélisation et simulation des systèmes</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Modélisation et simulation des systèmes</span></p>
             Crédit : 3 <br>
             Code EC : TSAEEA922<br>
             Master 2 Recherche : Électronique, Automatique et Télécommunication <br>
@@ -516,11 +531,11 @@ ob_start();
 </div>
 </div>
 <!-- 3è ligne -->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Intelligence artificielle</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Intelligence artificielle</span></p>
             Crédit : 3<br>
             Code EC : TSAEEA923<br>
             Master 2 Recherche : Électronique, Automatique et Télécommunication<br>
@@ -528,8 +543,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-            <p><span class="text-primary"style="font-weight: bold; font-family: inter;">Techniques de la haute tension</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Techniques de la haute tension</span></p>
             Crédit : 3<br>
             Code EC : TSAEEA931<br>
             Master 2 Recherche : Électronique, Automatique et Télécommunication<br>
@@ -537,8 +552,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Simulation des régimes transitoires électromagnétiques dans les réseaux électriques</span></p>
+        <div class=" border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Simulation des régimes transitoires électromagnétiques dans les réseaux électriques</span></p>
             Crédit : 3 <br>
             Code EC : TSAEEA932<br>
             Master 2 Recherche : Électronique, Automatique et Télécommunication <br>
@@ -548,11 +563,11 @@ ob_start();
 </div>
 </div>
 <!-- 4è ligne -->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Commande (optimale stochastique, systèmes robotiques et par ordinateur)</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Commande (optimale stochastique, systèmes robotiques et par ordinateur)</span></p>
             Crédit : 3<br>
             Code EC : TSAEEA933<br>
             Master 2 Recherche : Électronique, Automatique et Télécommunication<br>
@@ -560,8 +575,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-            <p><span class="text-primary"style="font-weight: bold; font-family: inter;">Traitement multimédia</span></p>
+        <div class="border-secondary rounded-pill p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Traitement multimédia</span></p>
             Crédit : 3<br>
             Code EC : TSAEEA934<br>
             Master 2 Recherche : Électronique, Automatique et Télécommunication<br>
@@ -569,8 +584,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">théorie de l'information</span></p>
+        <div class="border-secondary rounded-pill p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">théorie de l'information</span></p>
             Crédit : 3 <br>
             Code EC : TSAEEA935<br>
             Master 2 Recherche : Électronique, Automatique et Télécommunication <br>
@@ -580,11 +595,11 @@ ob_start();
 </div>
 </div>
 <!-- 5è ligne -->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Antennes et propagation avancée</span></p>
+        <div class="border-secondary rounded-pill p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Antennes et propagation avancée</span></p>
             Crédit : 3<br>
             Code EC : TSAEEA936<br>
             Master 2 Recherche : Électronique, Automatique et Télécommunication<br>
@@ -592,8 +607,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-            <p><span class="text-primary"style="font-weight: bold; font-family: inter;">Electronique de puissance avancée, Compatibilité électromagnétique et qualité d'énergie</span></p>
+        <div class="border-secondary rounded-pill p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Electronique de puissance avancée, Compatibilité électromagnétique et qualité d'énergie</span></p>
             Crédit : 3<br>
             Code EC : TSAEEA937<br>
             Master 2 Recherche : Électronique, Automatique et Télécommunication<br>
@@ -601,8 +616,8 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Composants programmables et systèmes embarqués</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span  style="font-weight: bold; font-family: inter;color: #2E3092">Composants programmables et systèmes embarqués</span></p>
             Crédit : 3 <br>
             Code EC : TSAEEA938<br>
             Master 2 Recherche : Électronique, Automatique et Télécommunication <br>
@@ -612,11 +627,11 @@ ob_start();
 </div>
 </div>
 <!-- 6è ligne -->
-<div class="container my-4">
+<div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-left">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
-            <p><span class="text-primary" style="font-weight: bold; font-family: inter;">Rédaction et Soutenance du Mémoire</span></p>
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+            <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Rédaction et Soutenance du Mémoire</span></p>
             Crédit : 30<br>
             Code EC : TSAMEM101<br>
             Master 2 Recherche : Énergétique<br>
@@ -639,10 +654,10 @@ ob_start();
     </div>
     </section>
     <!-- Carte avec bordure arrondie -->
-<div class="container my-4">
+    <div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
             <p><span class="text-warning" style="font-weight: bold; font-family: inter;">Séminaires : organisés par le laboratoire et autre sur plusieurs thématiques du domaine</span></p>
             Crédit : 5 <br>
             Code EC : DTSA11<br>  
@@ -652,7 +667,7 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
             <p><span class="text-warning" style="font-weight: bold; font-family: inter;">Recherche méthodologique : rédaction état de l’art sur la question de recherche</span></p>
             Crédit : 5<br>
             Code EC : DTSA12<br>
@@ -662,7 +677,7 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
+        <div class="border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
             <p><span class="text-warning" style="font-weight: bold; font-family: inter;">Tutorat et doctoriales </span></p>
             Crédit : 20 <br>
             Code EC : DTSA13<br>
@@ -681,10 +696,10 @@ ob_start();
     </div>
     </section>
     <!-- Carte avec bordure arrondie -->
-<div class="container my-4">
+    <div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
+        <div class=" border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
             <p><span class="text-warning" style="font-weight: bold; font-family: inter;">Colloques/Conférences</span></p>
             Crédit : 5<br>
             Code EC : DTSA21<br>  
@@ -694,7 +709,7 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
+        <div class=" border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif; border-radius: 50px;">
             <p><span class="text-warning" style="font-weight: bold; font-family: inter;">Publications Scientifiques</span></p>
             Crédit : 10<br>
             Code EC : DTSA22<br>
@@ -704,7 +719,7 @@ ob_start();
         </div>
     </div>
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
+        <div class=" border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
             <p><span class="text-warning" style="font-weight: bold; font-family: inter;">Tutorat et doctoriales </span></p>
             Crédit : 15<br>
             Code EC : DTSA23<br>
@@ -724,10 +739,10 @@ ob_start();
     </div>
     </section>
     <!-- Carte avec bordure arrondie -->
-<div class="container my-4">
+    <div class="container my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-left">
     <div class="col-12 col-md-4">
-        <div class="border border-secondary rounded-pill p-4 mb-3" style="background-color: #F2F2FC; font-family: sans-serif;border-radius: 50px;">
+        <div class=" border-secondary rounded-pill mt-3 p-4 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
             <p><span class="text-warning" style="font-weight: bold; font-family: inter;">Rédaction et soutenance de la thèse de doctorat</span></p>
             Crédit : 120 <br>
             Code EC : DTSA31<br>  
@@ -831,6 +846,8 @@ ob_start();
         </div>
     </div>
 </div>
+
+
 
 <?php
 $content=ob_get_clean();
