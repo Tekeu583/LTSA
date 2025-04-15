@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (empty($_SESSION['csrf_token'])) {
+    $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+}
 require_once(__DIR__."/config/config.php");
 require_once(__DIR__."/controller/EnseignantController.php");
 require_once(__DIR__."/controller/DoctorantController.php");
@@ -13,6 +17,8 @@ $doctorantController = new DoctorantController;
 $messagesController = new MessagesController;
 $request = $_SERVER['REQUEST_URI'];
 
+$request = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Nettoyage de l'URL
+$action = $_POST['action'] ?? $_GET['action'] ?? ''; // Gère GET et POST
 define('BASE_URL', 'http://localhost/projet ltsa/ltsa/');
 function getIntParam(string $key, int $default = 0) {
     return isset($_GET[$key]) ? $_GET[$key] : $default; 
@@ -47,8 +53,6 @@ if(empty($_GET['page'])){
             $enseignantController->ajoutEnseignantValidation();
         }else if($url[1] === "update"){
             $enseignantController->modificationEnseignantValidation();
-        }else{
-            echo "la page n'existe pas";
         }
         break;
         case "doctorant" : 
@@ -68,31 +72,28 @@ if(empty($_GET['page'])){
                 $doctorantController->ajoutDoctorantValidation();
             }else if($url[1] === "update"){
                 $doctorantController->modificationDoctorantValidation();
-            }else{
-                echo "la page n'existe pas";
             }
             break;
         case "admin":
-        if(empty($url[1])){
-            $adminController->showAdmin();
-        }else if($url[1] === "l"){
-            $adminController->showAdminById($url[2]);
-        }
-        else if($url[1] === "a"){
-            $adminController->addAdmin();
-        }
-        else if($url[1] === "m"){
-            $adminController->modificationAdmin($url[2]);
-        }else if($url[1] === "register"){
-            $adminController->ajoutAdminValidation();
-        }else if($url[1] === "update"){
-            $adminController->validerModificationAdmin();
-        }else if($url[1] === "s"){
-            $adminController->deleteAdmin($url[2]);
-        }else{
-            throw new Exception("la page n'existe pas");
-        }
-        break;
+            if(empty($url[1])){
+                $adminController->showAdmin();
+            }else if($url[1] === "l"){
+                $adminController->showAdminById($url[2]);
+            }
+            else if($url[1] === "a"){
+                $adminController->addAdmin();
+            }
+            else if($url[1] === "m"){
+                $adminController->modificationAdmin($url[2]);
+            }else if($url[1] === "register"){
+                $adminController->ajoutAdminValidation();
+            }else if($url[1] === "update"){
+                $adminController->validerModificationAdmin();
+            }else if($url[1] === "s"){
+                $adminController->deleteAdmin($url[2]);
+            }
+            break;
+
         case "login":
             if(empty($url[1])){
                 $adminController->showLoginForm();
@@ -114,9 +115,6 @@ if(empty($_GET['page'])){
             else{
             echo "<h1>la page n'existe pas</h1>";
             }
-            break;
-         case "specialites":require_once __DIR__."/views/admin/cours-specialité.php";
-            
             break;
         case "publications":require_once __DIR__."/views/admin/publications.php";
             
@@ -154,10 +152,68 @@ if(empty($_GET['page'])){
             
     }
 }
-// switch ($request) {
-//     case '/':
-//         $spcon->showSpecialite();
-//         $spcon->showCourses(getIntParam('id'));
-//         break;
-//     }
-// ?>
+
+//Routeur
+try {
+    // chargement des contrôleurs
+    $spcon = new SpecialiteController();
+        
+    if ($_SESSION['id']) {
+        switch ($request) {
+            case '/admin/specialite?id=doctorat':
+                // Actions CRUD pour les spécialités
+                if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                    switch ($action) {
+                        case 'addSpecialite':
+                            $spcon->addSpecialite();
+                            break;
+                        case 'editSpecialite':
+                            $spcon->updateSpecialite();
+                            break;
+                        case 'delspecialite':
+                            $spcon->deleteSpecialite(getIntParam("id"));
+                            break;
+                            
+                        // Gestion des cours de spécialité
+                        case 'addCours':
+                            $spcon->addCours();
+                            break;
+                        case 'editcours':
+                            $spcon->updateSpecialiteCours();
+                            break;
+                        case 'delcours':
+                            $spcon->deleteCours();
+                            break;
+                            
+                        // Gestion des cours de doctorat
+                        case 'addCoursDoctorat':
+                            $spcon->addDoctoratCours();                        
+                            break;
+                        case 'editDoctoratCours':
+                            $spcon->updateDoctoratCours();
+                            break;
+                        case 'delDoctoratCours':
+                            $spcon->deleteDoctoratCours();
+                            break;
+                    }
+                    redirect('/admin/specialite?id=' . ($_GET['id'] ?? '1'));
+    
+                }
+    
+                $spcon->showSpecialite();            
+                break;
+    
+            default:
+                echo "404 Page introuvable";
+                break;
+        }        
+    }else{
+        // la page de connexion
+    }
+
+} catch (Exception $e) {
+    $_SESSION['error'] = $e->getMessage();
+    redirect('/admin/specialite');
+}
+
+ ?>

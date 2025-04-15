@@ -34,7 +34,7 @@ class Specialite {
     // METHODES CRUD SPECIALITES
     // ======================
 
-    public static function create($name, $description, $code,) {
+    public static function create($name, $description, $code) {
         $conn = connectDB();
         $admin =  $_SESSION['id'];
         try {

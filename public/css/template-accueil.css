@@ -1,0 +1,143 @@
+ /* Première partie du header */
+ body {
+  margin: 0;
+  padding: 0;
+  padding-top: 50px; /* espace pour la navbar fixe */
+}
+
+/* NAVBAR */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: black;
+  width: 100%;
+  z-index: 1050;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-nav .nav-link {
+  color: white;
+  transition: color 0.3s;
+  padding: 1rem;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ccc;
+}
+
+.navbar-nav .nav-link.active {
+  color: orange !important;
+  font-weight: bold;
+}
+
+/* HEADER TOP */
+.header-top {
+  left: 0;
+  right: 0;
+  margin-top: 5px !important;
+  background-color: white;
+  padding: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+.container-fluid{
+  top: 5px;
+  margin-top: 10px !important;
+}
+
+.logo {
+  height: 80px;
+  width: auto;
+}
+
+.header-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  flex-grow: 1;
+  max-width: 600px;
+}
+
+.logo-container {
+  flex: 0 0 150px;
+  padding: 0 10px;
+}
+
+
+
+
+/* footer */
+.footer-ltsa {
+    background-color: var(--color-bleu-fonce) !important; /* Bleu foncé */
+    color: white;
+    padding: 30px 0 10px;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    position: relative;
+}
+
+.footer-column {
+    display: inline-block;
+    vertical-align: top;
+    width: 30%;
+    padding: 0 2%;
+}
+
+.footer-title {
+    color: #20d726; /* Vert */
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.contact-info p,
+.specialty,
+.presentation {
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.specialty {
+    text-transform: uppercase;
+}
+
+.specialty:first-child {
+    font-weight: bold;
+}
+
+.copyright {
+    color: white;
+    font-size: 0.9rem;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid white;
+    text-align: center;
+}
+
+.footer-container {
+
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+@media (max-width: 768px) {
+    .footer-column .specialty{
+        font-size: 10px;
+    }
+    .footer-column .contact-info p, .footer-column .presentation p{
+        font-size: 14px;
+    }
+    .footer-column{
+      display: block;
+      width: 90%;
+      margin: 10px auto;
+    }
+    
+}

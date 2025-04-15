@@ -29,9 +29,9 @@
         }
         public function deleteAdmin($id){
             session_start();
-            if(!$_SESSION['nom'] || !$_SESSION['id']){
-                header("Location:index.php?page=accueil");
-            }
+            // if(!$_SESSION['nom'] || !$_SESSION['id']){
+            //     header("Location:index.php?page=accueil");
+            // }
             $error=[];
             $success=[];
             $admin = new Admin();
@@ -59,9 +59,9 @@
         }
         public function ajoutAdminValidation(){
             session_start();
-            if(!$_SESSION['nom'] || !$_SESSION['id']){
-                header("Location:index.php?page=accueil");
-            }
+            // if(!$_SESSION['nom'] || !$_SESSION['id']){
+            //     header("Location:index.php?page=accueil");
+            // }
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $error=[];
                 if(!isset($_POST['nom']) || empty($_POST['nom'])){
@@ -123,9 +123,9 @@
         }
         public function validerModificationAdmin(){
             session_start();
-            if(!$_SESSION['nom'] || !$_SESSION['id']){
-                header("Location:index.php?page=accueil");
-            }
+            // if(!$_SESSION['nom'] || !$_SESSION['id']){
+            //     header("Location:index.php?page=accueil");
+            // }
             if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $error=[];
                 if(!isset($_POST['id']) || empty($_POST['id'])){
@@ -177,7 +177,7 @@
         
         }
         public function showLoginForm() {
-            session_start();
+            // session_start();
             $_SESSION['token_csrf'] = bin2hex(random_bytes(32));
             // Afficher le formulaire de connexion
             require_once __DIR__ . '/../views/login.php';

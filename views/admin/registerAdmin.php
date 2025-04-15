@@ -1,8 +1,8 @@
 <?php
-if (!isset($_SESSION['token']) and !isset($_SESSION['id']) and !isset($_SESSION['nom'])) {
-    //redirectionner vers la page d'accueil du visiteur;
-    header("Location:../../index.php");
-}
+// if (!isset($_SESSION['token']) and !isset($_SESSION['id']) and !isset($_SESSION['nom'])) {
+//     //redirectionner vers la page d'accueil du visiteur;
+//     header("Location:../../index.php");
+// }
 ?>
 <!DOCTYPE html>
 <html lang="fr">

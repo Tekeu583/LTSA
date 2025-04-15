@@ -1,9 +1,10 @@
 <?php
-session_start();
-if (!isset($_SESSION['token']) and !isset($_SESSION['id']) and !isset($_SESSION['nom'])) {
-    //redirectionner vers la page d'accueil du visiteur;
-    header("Location:index.php?page=accueil");
-}
+define('URL', 'http://localhost/projet ltsa/ltsa/');
+// if (!isset($_SESSION['token']) and !isset($_SESSION['id']) and !isset($_SESSION['nom'])) {
+//     //redirectionner vers la page d'accueil du visiteur;
+//     header("Location:index.php?page=accueil");
+// }
+
 $heure = date("H");
 if($heure < 12){
     $salutation = "Bonjour ";
@@ -48,14 +49,14 @@ $currentPage = $_GET['page'] ?? '';
   <div class="sidebar" id="sidebar">
     <h4 class="text-center">LTSA</h4>
     <a href="index.php" class="nav-link">Accueil</a>
-    <a href="<?= BASE_URL ?>index.php?page=doctorant"class="nav-link <?= $currentPage === 'doctorant' ? 'active-link' : '' ?>" >Doctorants</a>
-    <a href="<?= BASE_URL ?>index.php?page=enseignant" class="nav-link <?= $currentPage === 'enseignant' ? 'active-link' : '' ?>">Enseignants</a>
-    <a href="<?= BASE_URL ?>index.php?page=specialites" class="nav-link <?= $currentPage === 'specialites' ? 'active-link' : '' ?>">Cours/ Specialitées</a>
-    <a href="<?= BASE_URL ?>index.php?page=publications" class="nav-link <?= $currentPage === 'publications' ? 'active-link' : '' ?>">Publications</a>
-    <a href="<?= BASE_URL ?>index.php?page=actualites" class="nav-link <?= $currentPage === 'actualites' ? 'active-link' : '' ?>">Actualités</a>
-    <a href="<?= BASE_URL ?>index.php?page=contact/message" class="nav-link <?= $currentPage === 'message' ? 'active-link' : '' ?>">Messages</a>
-    <a href="<?= BASE_URL ?>index.php?page=admin" class="nav-link <?= $currentPage === 'admin' ? 'active-link' : '' ?>">Admin</a>
-    <a href="<?= BASE_URL ?>index.php?page=login/decon">Déconnexion</a>
+    <a href="<?= URL ?>index.php?page=doctorant"class="nav-link <?= $currentPage === 'doctorant' ? 'active-link' : '' ?>" >Doctorants</a>
+    <a href="<?= URL ?>index.php?page=enseignant" class="nav-link <?= $currentPage === 'enseignant' ? 'active-link' : '' ?>">Enseignants</a>
+    <a href="<?= URL ?>views/admin/specialite?id=doctorat" class="nav-link <?= $currentPage === 'specialites' ? 'active-link' : '' ?>">Cours/ Specialitées</a>
+    <a href="<?= URL ?>index.php?page=publications" class="nav-link <?= $currentPage === 'publications' ? 'active-link' : '' ?>">Publications</a>
+    <a href="<?= URL ?>index.php?page=actualites" class="nav-link <?= $currentPage === 'actualites' ? 'active-link' : '' ?>">Actualités</a>
+    <a href="<?= URL ?>index.php?page=contact/message" class="nav-link <?= $currentPage === 'message' ? 'active-link' : '' ?>">Messages</a>
+    <a href="<?= URL ?>index.php?page=admin" class="nav-link <?= $currentPage === 'admin' ? 'active-link' : '' ?>">Admin</a>
+    <a href="<?= URL ?>index.php?page=login/decon">Déconnexion</a>
   </div>
 
   <!-- Overlay -->

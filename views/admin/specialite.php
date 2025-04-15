@@ -1,7 +1,7 @@
 <?php
 ob_start();
+session_start();
 $page_title = "Cours par spécialité";
-include 'views/admin/template.php';
 ?>
 
 <div class="row p-3">
@@ -562,3 +562,8 @@ document.addEventListener('DOMContentLoaded', function() {
     handleToastWithHover('dangerToast');
 });
 </script>
+<?php
+$titre = "specialite";
+$content=ob_get_clean();
+require("template.php");
+?>
