@@ -145,7 +145,7 @@ function  initializeDatabase (){
             echo "La table 'cycleDoctorat' n'existe pas, création de la table...<br>";
             $db->exec("CREATE TABLE cycleDoctorat (
                 id            Int  Auto_increment  NOT NULL ,
-                AnneeDoctorat Varchar (2) NOT NULL ,
+                AnneeDoctorat Varchar (20) NOT NULL ,
                 codeEc        Varchar (20) NOT NULL ,
                 intituleEc    Varchar (50) NOT NULL ,
                 creditEc      Int NOT NULL ,

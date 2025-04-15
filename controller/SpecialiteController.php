@@ -1,206 +1,350 @@
 <?php
 
-require_once  __DIR__ ."/../Models/Specialite.php";
-
+require_once __DIR__ . "/../Models/Specialite.php";
 
 class SpecialiteController {
-    
-    private $model;
+    private $specialiteModel;
 
     public function __construct() {
-        $this->model = new Specialite();
-        
+        $this->specialiteModel = new Specialite();
     }
 
-    // specialité
-    public  function showSpecialite() {
-       try{
-        
-        
-        $specialites = $this->model->getAllSpecialites();
-        $courses = $this->showCourses($specialite_id= getIntParam("id"));
-        $spec = $this->getSpecialiteById($id = getIntParam("id"));
-        
+    // ==========================================
+    // AFFICHAGE PRINCIPAL
+    // ==========================================
 
-        require_once 'views/admin/specialite.php';
-       }catch (Exception $e) {
-        $_SESSION['error'] = "Erreur lors du chargement des spécialités: " . $e->getMessage();
-        require_once 'views/admin/specialite.php';
+    public function showSpecialite() {
+        try {
+            $specialites = Specialite::getAll();
+            $id = $_GET['id'] ?? null;
+            
+            if ($id === 'doctorat') {
+                // Mode doctorat
+                $doctoratInfo = Specialite::getDoctoratInfo();
+                $courses = Specialite::getDoctoratCourses();
+                $spec = "Doctorat";
+                $isDoctorat = true;
+            } elseif (ctype_digit($id)) {
+                // Mode spécialité normale
+                $currentSpecialite = new Specialite((int)$id);
+                $courses = $currentSpecialite->getCourses();
+                $spec = $currentSpecialite->getName();
+                $isDoctorat = false;
+            } else {
+                // Mode par défaut (première spécialité)
+                $courses = [];
+                $spec = null;
+                $isDoctorat = false;
+            }
+
+            require_once 'views/admin/specialite.php';
+        } catch (Exception $e) {
+            $_SESSION['error'] = "Erreur lors du chargement : " . $e->getMessage();
+            require_once 'views/admin/specialite.php';
         }
     }
 
-    public function deleteSpecialite($id) {
-        try{
-            $this->model->delspecialite($id);
-            $_SESSION['success'] = "Spécialité supprimée avec succès";
-        }catch (Exception $e) {
-            $_SESSION["error"] = "Erreur à la suppression". $e->getMessage();
-            header('Location: /admin/specialite?id='. $id);
-            exit;
-        }        
-        
-        header('Location: /admin/specialite?id='. $id-1);
-        exit;
-    }
-
-    public function updateSpecialite() {
-        $id = $_POST['id'] ?? null;
-        $name = $_POST['nom'] ?? null;
-        $code = $_POST['code'] ?? null;
-        $description = $_POST['description'] ?? null;
-    
-        $result = $this->model->editSpecialite($id, $name, $description, $code);
-    
-        if ($result > 0) {
-            $_SESSION['success'] = "Spécialité mise à jour avec succès";
-        } else {
-            $_SESSION['error'] = $result === false 
-                ? "Erreur lors de la mise à jour" 
-                : "Aucune modification effectuée";
-        }
-    
-        header("Location: /admin/specialite?id=".$id);
-        exit;
-    }
+    // ==========================================
+    // GESTION DES SPECIALITES
+    // ==========================================
 
     public function addSpecialite() {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header("Location: /admin/specialite");
+            exit;
+        }
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        try {
             $nom = $_POST['nom'] ?? '';
             $description = $_POST['description'] ?? '';
             $code = $_POST['code'] ?? '';
-            $id_admin = $_SESSION['user_id'] ?? 0; // À adapter
-    
-            // Validation
+            $id_admin = $_SESSION['user_id'] ?? 0;
+
             if (empty($nom) || empty($code)) {
-                $_SESSION['error'] = "Nom et code sont obligatoires";
-                header("Location: /admin/specialite?id=".$_GET["id"]);
-                exit;
+                throw new Exception("Le nom et le code sont obligatoires");
             }
-    
-            $result = $this->model->newspecialite($nom, $description, $id_admin, $code);
-    
-            if ($result) {
-                $_SESSION['success'] = "Spécialité ajoutée avec succès !";
-            } else {
-                $_SESSION['error'] = "Erreur lors de l'ajout de la spécialité";
-            }
+
+            $id = Specialite::create($nom, $description, $code);
             
-            if (is_object($result) && isset($result->id)) {
-                header("Location: /admin/specialite?id=".$result->id);
-            } else {
-                $_SESSION['error'] = "Erreur lors de l'ajout de la spécialité";
-                header("Location: /admin/specialite?id=1");
-            }
+            $_SESSION['success'] = "Spécialité créée avec succès";
+            header("Location: /admin/specialite?id=" . $id);
             exit;
-        }
-        
-        // Affichage normal si GET
-        include __DIR__ .'/../views/admin/specialite.php';
-    }
-    public function getSpecialiteById($id) {
-        $specialite = new Specialite();
-        return $specialite->getspecialite_id($id);
-    }
-
-
-    // cours
-    public function showCourses($specialite_id) {
-        $specialite = new Specialite();
-        return $specialite->get_courses_by_specialite($specialite_id);
-    }
-
-    public function addcours() {            
-        // Vérification CSRF
-        if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-            $_SESSION['error'] = "Token de sécurité invalide";
-            header("Location: /admin/specialite?id=".$_POST['id_specialite']);
-            exit;
-        }    
-        try {            
-    
-            $result = $this->model->newcourse(
-                trim($_POST['codeEC']),
-                trim($_POST['intituleEC']),
-                (float)($_POST['coef'] ?? 0),
-                (int)($_POST['cm'] ?? 0),
-                (int)($_POST['td'] ?? 0),
-                (int)($_POST['tp'] ?? 0),
-                (int)($_POST['tpe'] ?? 0),
-                (int)($_POST['ccts'] ?? 0),
-                (int)($_POST['id_specialite'])
-            );
-
-        
-            if ($result) {
-                $_SESSION['success'] = "Cours ajouté avec succès!!  intitule: " . $_POST['intituleEC'];
-            } else {
-                $_SESSION['error'] = "Erreur lors de l'ajout du cours";
-            }
-    
-        } catch (InvalidArgumentException $e) {
-            $_SESSION['error'] = $e->getMessage();
         } catch (Exception $e) {
-            $_SESSION['error'] = "Erreur technique: " . $e->getMessage();
+            $_SESSION['error'] = $e->getMessage();
+            header("Location: /admin/specialite");
+            exit;
         }
-        $specialite_id = $_POST['id_specialite'] ?? 1;
-        header("Location: /admin/specialite?id=".$specialite_id);
+    }
+
+    public function updateSpecialite() {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header("Location: /admin/specialite");
+            exit;
+        }
+
+        try {
+            $id = $_POST['id'] ?? null;
+            $nom = $_POST['nom'] ?? '';
+            $description = $_POST['description'] ?? '';
+            $code = $_POST['code'] ?? '';
+
+            if (empty($id)) {
+                throw new Exception("ID de spécialité manquant");
+            }
+
+            $specialite = new Specialite((int)$id);
+            $specialite->update($nom, $description, $code);
+            
+            $_SESSION['success'] = "Spécialité mise à jour avec succès";
+        } catch (Exception $e) {
+            $_SESSION['error'] = $e->getMessage();
+        }
+
+        header("Location: /admin/specialite?id=" . $id);
         exit;
     }
-    public function updatecours(){
-        if (!isset($_POST['csrf_token']) || $_POST['csrf_token'] !== $_SESSION['csrf_token']) {
-            $_SESSION['error'] = "Token de sécurité invalide";
-            header("Location: /admin/specialite?id=" . ($_GET['id'] ?? '1'));
-            exit;
-        } 
-        if(!$_POST['cours_id']){
-            $_SESSION['error'] = 'errer';
-            header('/admin/specialite?id=' . ($_GET['id'] ?? '1'));
+
+    public function deleteSpecialite($id) {
+        try {
+            $specialite = new Specialite((int)$id);
+            $specialite->delete();
+            
+            $_SESSION['success'] = "Spécialité supprimée avec succès";
+        } catch (Exception $e) {
+            $_SESSION['error'] = $e->getMessage();
         }
+
+        // Rediriger vers la première spécialité
+        header("Location: /admin/specialite");
+        exit;
+    }
+
+    // ==========================================
+    // GESTION DES COURS (SPECIALITE ET DOCTORAT)
+    // ==========================================
+
+    public function addCours() {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header("Location: /admin/specialite");
+            exit;
+        }
+
+        try {
+            $specialite_id = $_POST['id_specialite'] ?? null;
+            $isDoctorat = ($specialite_id === 'doctorat');
+
+            if ($isDoctorat) {
+                // Ajout d'un cours de doctorat
+                $this->addDoctoratCours();
+            } else {
+                // Ajout d'un cours normal
+                $this->addSpecialiteCours((int)$specialite_id);
+            }
+        } catch (Exception $e) {
+            $_SESSION['error'] = $e->getMessage();
+            $id = $isDoctorat ? 'doctorat' : $specialite_id;
+            header("Location: /admin/specialite?id=" . $id);
+            exit;
+        }
+    }
+
+    private function addSpecialiteCours($specialite_id) {
+        $specialite = new Specialite($specialite_id);
+        
+        $specialite->addCourse(
+            trim($_POST['codeEC']),
+            trim($_POST['intituleEC']),
+            (float)($_POST['coef'] ?? 0),
+            (int)($_POST['cm'] ?? 0),
+            (int)($_POST['td'] ?? 0),
+            (int)($_POST['tp'] ?? 0),
+            (int)($_POST['tpe'] ?? 0),
+            (int)($_POST['ccts'] ?? 0)
+        );
+
+        $_SESSION['success'] = "Cours ajouté avec succès";
+        header("Location: /admin/specialite?id=" . $specialite_id);
+        exit;
+    }
+
+    public function addDoctoratCours() {
         try{
-            $result = $this->model->editcours(
+            $specialite = new Specialite();
+            $specialite->addDoctoratCours(
                 trim($_POST['codeEC']),
                 trim($_POST['intituleEC']),
-                (float)($_POST['coef'] ?? 0),
-                (int)($_POST['cm'] ?? 0),
-                (int)($_POST['td'] ?? 0),
-                (int)($_POST['tp'] ?? 0),
-                (int)($_POST['tpe'] ?? 0),
-                (int)($_POST['ccts'] ?? 0),
-                (int)($_POST['cours_id'] )
+                (int)($_POST['creditEC'] ?? 0),
+                trim($_POST['anneeDoctorat'])
             );
-            if ($result) {
-                $_SESSION['success'] = 'Cours mis à jour avec succès!';
-                header("Location: /admin/specialite?id=" . ($_GET['id'] ?? '1'));
-                exit;
-            } else {
-                $_SESSION['error'] = $result === false 
-                    ? "Erreur lors de la mise à jour" 
-                    : "Aucune modification effectuée";
-                header("Location: /admin/specialite?id=" . ($_GET['id'] ?? '1'));
-                exit;
-            }  
-        }catch(Exception $e){
-            $_SESSION['error'] = $e->getMessage();
-            header("Location: /admin/specialite?id=" . ($_GET['id'] ?? '1'));
-            exit;
-        }
-                
-    }
-    public function delcourse(){
-        try{
-            $this->model->deletecourse($_POST['cours_id']);
-            $_SESSION['success'] = "Cours supprimé avec succès";
-            header("Location: /admin/specialite?id=" . ($_GET['id'] ??  '1'));        
+            $_SESSION['success'] = 'Cours de doctorat ajouté avec succès';
+            header("Location: /admin/specialite?id=doctorat");
             exit;
         }catch(Exception $e){
-            $_SESSION['error'] = $e->getMessage();
+            $_SESSION["error"] = $e->getMessage();
+            echo $e->getMessage();
+            header("Location: /admin/specialite?id=doctorat");
         }
 
-        header("Location: /admin/specialite?id=" . ($_GET['id'] ??  '1'));
+        header("Location: /admin/specialite?id=doctorat");
         exit;
     }
 
-    
+    public function updateCours() {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header("Location: /admin/specialite?id=".$_GET['id']);
+            exit;
+        }
+
+        try {
+            $isDoctorat = $_POST['specialite_id'] === 'doctorat';
+            
+            if ($isDoctorat) {
+                $this->updateDoctoratCours();
+            } else {
+                $this->updateSpecialiteCours();
+            }
+        } catch (Exception $e) {
+            $_SESSION['error'] = $e->getMessage();
+            $id = $isDoctorat ? 'doctorat' : $_POST['specialite_id'];
+            header('Location: /admin/specialite?id=' . $id);
+            exit;
+        }
+    }
+
+    public function updateSpecialiteCours() {
+        $specialite = new Specialite((int)$_POST['specialite_id']);
+        
+        
+        $result = $specialite->editCours(
+            trim($_POST['codeEC']),
+            trim($_POST['intituleEC']),
+            (float)($_POST['coef'] ?? 0),
+            (int)($_POST['cm'] ?? 0),
+            (int)($_POST['td'] ?? 0),
+            (int)($_POST['tp'] ?? 0),
+            (int)($_POST['tpe'] ?? 0),
+            (int)($_POST['ccts'] ?? 0),
+            (int)($_POST['cours_id'])
+        );
+
+        if ($result) {
+            $_SESSION['success'] = "Cours mis à jour avec succès";
+        } else {
+            $_SESSION['error'] = "Aucune modification effectuée";
+        }
+        
+        header("Location: /admin/specialite?id=" . $_POST['specialite_id']);
+        exit;
+    }
+
+    public function updateDoctoratCours() {
+        $conn = connectDB();
+        $conn->beginTransaction();
+        
+        try {
+            $stmt = $conn->prepare("UPDATE cycleDoctorat SET 
+                                   codeEC = :codeEC,
+                                   intituleEC = :intituleEC,
+                                   creditEC = :creditEC,
+                                   anneeDoctorat = :anneeDoctorat
+                                   WHERE id = :id");
+            
+            $stmt->execute([
+                ':id' => (int)$_POST['cours_id'],
+                ':codeEC' => trim($_POST['codeEC']),
+                ':intituleEC' => trim($_POST['intituleEC']),
+                ':creditEC' => (int)($_POST['creditEC'] ?? 0),
+                ':anneeDoctorat' => trim($_POST['anneeDoctorat'])
+            ]);
+            
+            $conn->commit();
+            $_SESSION['success'] = "Cours de doctorat mis à jour avec succès";
+            header("Location: /admin/specialite?id=doctorat");
+            exit;
+        } catch (PDOException $e) {
+            $conn->rollBack();
+            throw new Exception("Erreur lors de la mise à jour du cours de doctorat");
+        }
+    }
+
+    public function deleteCours() {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header("Location: /admin/specialite");
+            exit;
+        }
+
+        try {
+            $isDoctorat = $_POST['specialite_id'] === 'doctorat';
+            
+            if ($isDoctorat) {
+                $this->deleteDoctoratCours();
+            } else {
+                $this->deleteSpecialiteCours();
+            }
+        } catch (Exception $e) {
+            $_SESSION['error'] = $e->getMessage();
+            $id = $isDoctorat ? 'doctorat' : $_POST['specialite_id'];
+            header("Location: /admin/specialite?id=" . $id);
+            exit;
+        }
+    }
+
+    public function deleteSpecialiteCours() {
+        $specialite = new Specialite((int)$_POST['specialite_id']);
+        
+        // Note: La méthode deleteCourse devrait être implémentée dans le modèle
+        $specialite->deleteCourse((int)$_POST['cours_id']);
+        
+        $_SESSION['success'] = "Cours supprimé avec succès";
+        header("Location: /admin/specialite?id=" . $_POST['specialite_id']);
+        exit;
+    }
+
+    public function deleteDoctoratCours() {
+        $conn = connectDB();
+        $conn->beginTransaction();
+        
+        try {
+            $stmt = $conn->prepare("DELETE FROM cycleDoctorat WHERE id = :id");
+            $stmt->execute([':id' => (int)$_POST['cours_id']]);
+            
+            $conn->commit();
+            $_SESSION['success'] = "Cours de doctorat supprimé avec succès";
+            header("Location: /admin/specialite?id=doctorat");
+            exit;
+        } catch (PDOException $e) {
+            $conn->rollBack();
+            throw new Exception("Erreur lors de la suppression du cours de doctorat");
+        }
+    }
+
+    // ==========================================
+    // GESTION DU DOCTORAT
+    // ==========================================
+
+    public function updateDoctorat() {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            header("Location: /admin/specialite?id=doctorat");
+            exit;
+        }
+
+        try {
+            $nom = $_POST['nom'] ?? '';
+            $description = $_POST['description'] ?? '';
+
+            if (empty($nom)) {
+                throw new Exception("Le nom du doctorat est obligatoire");
+            }
+
+            Specialite::updateDoctorat($nom, $description);
+            
+            $_SESSION['success'] = "Doctorat mis à jour avec succès";
+        } catch (Exception $e) {
+            $_SESSION['error'] = 'echec de la mise à jour'.$e->getMessage();
+            
+        }
+
+        header("Location: /admin/specialite?id=doctorat");
+        exit;
+    }
 }
-?>

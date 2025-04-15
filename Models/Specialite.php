@@ -1,233 +1,419 @@
 <?php
-require_once(__DIR__ . "/../config/bdltsa.php");
+require_once __DIR__ . "/../config/bdltsa.php";
 
 class Specialite {
-
+    // Propriétés
     private $id;
     private $name;
     private $description;
-    private $specialite_id;
-    private $id_admin;
-    private $codeEC;
-    private $intituleEC;
-    private $coef;
-    private $cm;
-    private $td;
-    private $tp;
-    private $tpe;
-    private $ccts;
     private $code;
+    private $id_admin;
 
+    // ======================
+    // CONSTRUCTEUR ET CHARGEMENT
+    // ======================
 
-    public function newspecialite($name, $description, $id_admin, $code) {
+    public function __construct($id = null) {
+        if ($id !== null) {
+            $this->load($id);
+        }
+    }
+
+    private function load($id) {
+        $data = $this->getById($id);
+        if ($data) {
+            $this->id = $data['id'];
+            $this->name = $data['nom'];
+            $this->description = $data['description'];
+            $this->code = $data['code'];
+            $this->id_admin = $data['id_admin'];
+        }
+    }
+
+    // ======================
+    // METHODES CRUD SPECIALITES
+    // ======================
+
+    public static function create($name, $description, $code,) {
         $conn = connectDB();
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    
+        $admin =  $_SESSION['id'];
         try {
-            $conn->beginTransaction();
-            
             $stmt = $conn->prepare("INSERT INTO specialite (nom, description, code, id_admin) 
-                VALUES (:name, :description, :code, :id_admin)");
-    
-            $stmt->bindParam(':name', $name);
-            $stmt->bindParam(':description', $description);
-            $stmt->bindParam(':code', $code);
-            $stmt->bindParam(':id_admin', $id_admin);
-    
-            $result = $stmt->execute();
-            $conn->commit();
-            
-            return $result;
-    
-        } catch (PDOException $e) {
-            if ($conn->inTransaction()) {
-                $conn->rollBack();
-            }
-            error_log("Erreur DB: " . $e->getMessage());
-            return false;
-        }
-    }
-    
-
-    public function editSpecialite($id, $name, $description, $code) {
-        $conn = connectDB();
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $conn->beginTransaction(); // Début de transaction
-    
-        try {
-            // Validation robuste des données
-            if (!is_numeric($id) || $id <= 0) {
-                throw new InvalidArgumentException("ID invalide");
-            }
-    
-            if (empty(trim($name)) || strlen(trim($name)) > 100) {
-                throw new InvalidArgumentException("Nom invalide (1-100 caractères)");
-            }
-    
-            if (empty(trim($code)) || strlen(trim($code)) > 20) {
-                throw new InvalidArgumentException("Code invalide (1-20 caractères)");
-            }
-    
-            // Requête préparée sécurisée
-            $stmt = $conn->prepare("UPDATE specialite 
-                                   SET nom = :name,
-                                       description = :description,
-                                       code = :code
-                                   WHERE id = :id");
-    
-            $stmt->bindValue(':id', $id, PDO::PARAM_INT);
-            $stmt->bindValue(':name', trim($name), PDO::PARAM_STR);
-            $stmt->bindValue(':description', !empty(trim($description)) ? trim($description) : null, PDO::PARAM_STR);
-            $stmt->bindValue(':code', trim($code), PDO::PARAM_STR);
-    
-            $stmt->execute();
-            $rowCount = $stmt->rowCount();
-            
-            $conn->commit(); // Validation de la transaction
-            
-            return $rowCount;
-    
-        } catch (PDOException $e) {
-            $conn->rollBack();
-            error_log("[".date('Y-m-d H:i:s')."] ERREUR DB: " . $e->getMessage() . " dans " . __FILE__ . " ligne " . __LINE__);
-            throw new Exception("Erreur de mise à jour en base de données");
-            
-        } catch (InvalidArgumentException $e) {
-            $conn->rollBack();
-            error_log("[".date('Y-m-d H:i:s')."] ERREUR VALIDATION: " . $e->getMessage());
-            throw $e;
-            
-        } catch (Exception $e) {
-            $conn->rollBack();
-            error_log("[".date('Y-m-d H:i:s')."] ERREUR INATTENDUE: " . $e->getMessage());
-            throw new RuntimeException("Erreur lors de la mise à jour");
-        }
-    }
-
-    public function delspecialite ($id){
-        $conn = connectDB();
-        $conn->beginTransaction();
-        try {
-            $stmt = $conn->prepare("DELETE FROM specialite WHERE id = ? ");            
-            $stmt->execute([$id]);
-
-            $conn->commit(); // Validation de la transaction
-            
-        }catch (PDOException $e) {
-            $conn->rollBack(); // Annulation de la transaction en cas d'erreur  
-            $_SESSION['error'] = "Erreur à la suppression". $e->getMessage();          
-        } finally {
-            $conn = null; // Ferme la connexion
-        }
-    }
-
-    public static function getAllSpecialites() {
-        $conn = connectDB();
-        try {
-            $stmt = $conn->prepare("SELECT * FROM specialite ORDER BY id ASC");
-            $stmt->execute();
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();            
-        }
-    }
-    
-
-    public static function getspecialite_id($id) {
-        $conn = connectDB();
-        try {
-            $stmt = $conn->prepare("SELECT nom FROM specialite WHERE id = :id");
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-            
-            // Récupère uniquement la colonne 'nom'
-            $result = $stmt->fetch(PDO::FETCH_ASSOC);
-            
-            return $result ? $result['nom'] : null;
-        } catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();            
-        }
-    }
-
-    public function newcourse($codeEC, $intituleEC, $coef, $cm, $td, $tp, $tpe, $ccts, $specialite) {
-        $conn = connectDB();
-        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-        try {
-            // Validation des types
-            if (!is_numeric($coef) || !is_numeric($cm) || !is_numeric($td) || 
-                !is_numeric($tp) || !is_numeric($tpe) || !is_numeric($ccts)) {
-                throw new InvalidArgumentException("Tous les champs numériques doivent être valides");
-            }
-    
-            $stmt = $conn->prepare("INSERT INTO cours (codeEC, intituleEC, coef, CM, TD, TP, TPE, CCTS, specialite) 
-                                   VALUES (:codeEC, :intituleEC, :coef, :cm, :td, :tp, :tpe, :ccts, :specialite)");
+                                  VALUES (:name, :description, :code, :admin)");
             
             $stmt->execute([
-                ':codeEC' => $codeEC,
-                ':intituleEC' => $intituleEC,
+                ':name' => trim($name),
+                ':description' => trim($description),
+                ':code' => trim($code),
+                ':id_admin' => (int)$admin
+            ]);
+            
+            return $conn->lastInsertId();
+        } catch (PDOException $e) {
+            error_log("Erreur création spécialité: " . $e->getMessage());
+            throw new Exception("Erreur lors de la création de la spécialité");
+        }
+    }
+
+    public function update($name, $description, $code) {
+        $conn = connectDB();
+        $conn->beginTransaction();
+        
+        try {
+            $stmt = $conn->prepare("UPDATE specialite SET 
+                                   nom = :name,
+                                   description = :description,
+                                   code = :code
+                                   WHERE id = :id");
+            
+            $stmt->execute([
+                ':id' => $this->id,
+                ':name' => trim($name),
+                ':description' => trim($description),
+                ':code' => trim($code)
+            ]);
+            
+            $conn->commit();
+            return true;
+        } catch (PDOException $e) {
+            $conn->rollBack();
+            error_log("Erreur mise à jour spécialité: " . $e->getMessage());
+            throw new Exception("Erreur lors de la mise à jour de la spécialité");
+        }
+    }
+
+    public function delete() {
+        $conn = connectDB();
+        $conn->beginTransaction();
+        
+        try {
+            // Suppression des cours associés
+            $this->deleteAllCourses();
+            
+            // Suppression de la spécialité
+            $stmt = $conn->prepare("DELETE FROM specialite WHERE id = :id");
+            $stmt->execute([':id' => $this->id]);
+            
+            $conn->commit();
+            return true;
+        } catch (PDOException $e) {
+            $conn->rollBack();
+            error_log("Erreur suppression spécialité: " . $e->getMessage());
+            throw new Exception("Erreur lors de la suppression de la spécialité");
+        }
+    }
+
+    // ======================
+    // METHODES COURS SPECIALITE
+    // ======================
+
+    public function getCourses() {
+        $conn = connectDB();
+        try {
+            $stmt = $conn->prepare("SELECT * FROM cours WHERE specialite = :id ORDER BY codeEC");
+            $stmt->execute([':id' => $this->id]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erreur récupération cours: " . $e->getMessage());
+            throw new Exception("Erreur lors de la récupération des cours");
+        }
+    }
+
+    public function addCourse($codeEC, $intituleEC, $coef, $cm, $td, $tp, $tpe, $ccts) {
+        $conn = connectDB();
+        $conn->beginTransaction();
+        $admin =  $_SESSION['id'];
+        try {
+            $stmt = $conn->prepare("INSERT INTO cours 
+                                  (codeEC, intituleEC, coef, CM, TD, TP, TPE, CCTS, specialite, id_admin) 
+                                  VALUES (:codeEC, :intituleEC, :coef, :cm, :td, :tp, :tpe, :ccts, :specialite, :admin)");
+            
+            $stmt->execute([
+                ':codeEC' => trim($codeEC),
+                ':intituleEC' => trim($intituleEC),
                 ':coef' => (float)$coef,
                 ':cm' => (int)$cm,
                 ':td' => (int)$td,
                 ':tp' => (int)$tp,
                 ':tpe' => (int)$tpe,
                 ':ccts' => (int)$ccts,
-                ':specialite' => (int)$specialite
+                ':specialite' => $this->id,
+                ':admin' => $admin
             ]);
-    
-            return $conn->lastInsertId(); // Retourne l'ID du nouveau cours
-    
+            
+            $conn->commit();
+            return $conn->lastInsertId();
         } catch (PDOException $e) {
-            error_log("Erreur DB: " . $e->getMessage());
+            $conn->rollBack();
+            error_log("Erreur ajout cours: " . $e->getMessage());
             throw new Exception("Erreur lors de l'ajout du cours");
         }
     }
-    public function editcours($codeEC, $intituleEC, $coef, $cm,$td, $tp, $tpe, $ccts, $id) {
+
+    public function addDoctoratCours($codeEC, $intituleEC, $creditEC, $anneeDoctorat){
         $conn = connectDB();
+        $conn->beginTransaction();
+        $admin =  $_SESSION['id'];
         try {
-            $stmt = $conn->prepare("UPDATE cours SET codeEC = :codeEC, intituleEC = :intituleEC, coef = :coef, cm = :cm, td = :td, tp = :tp, tpe = :tpe, ccts = :ccts WHERE id = :id");
-            $stmt->bindParam(':codeEC', $codeEC, PDO::PARAM_STR);
-            $stmt->bindParam(':intituleEC', $intituleEC, PDO::PARAM_STR);
-            $stmt->bindParam(':coef', $coef, PDO::PARAM_STR);   
-            $stmt->bindParam(':cm', $cm, PDO::PARAM_STR);
-            $stmt->bindParam(':td', $td, PDO::PARAM_STR);
-            $stmt->bindParam(':tp', $tp, PDO::PARAM_STR);
-            $stmt->bindParam(':tpe', $tpe, PDO::PARAM_STR);
-            $stmt->bindParam(':ccts', $ccts, PDO::PARAM_STR);
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-            return $stmt->rowCount(); // Retourne le nombre de lignes affectées
-        }catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();            
+            $stmt = $conn->prepare("INSERT INTO cycleDoctorat 
+                                   (codeEC, intituleEC, creditEC, anneeDoctorat, id_admin) 
+                                   VALUES (:codeEC, :intituleEC, :creditEC, :anneeDoctorat, :admin)");
+            
+            $stmt->execute([
+                ':codeEC' => trim($codeEC),
+                ':intituleEC' => trim($intituleEC),
+                ':creditEC' => (int)($creditEC),
+                ':anneeDoctorat' => trim($anneeDoctorat),
+                ':admin' => $admin
+            ]);
+            
+            $conn->commit();
+            $_SESSION['success'] = "Cours de doctorat ajouté avec succès";
+            
+        } catch (PDOException $e) {            
+            $conn->rollBack();
+            $_SESSION["error"] = $e->getMessage();
+            throw new Exception("Erreur lors de l'ajout du cours de doctorat");
         }
     }
-    public function deletecourse($id) {
+
+    private function deleteAllCourses() {
+        $conn = connectDB();
+        $stmt = $conn->prepare("DELETE FROM cours WHERE specialite = :id");
+        $stmt->execute([':id' => $this->id]);
+    }
+
+    // ======================
+    // METHODES DOCTORAT
+    // ======================
+
+    public static function getDoctoratInfo() {
         $conn = connectDB();
         try {
-            $stmt = $conn->prepare("DELETE FROM cours WHERE id = :id");
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt = $conn->prepare("SELECT * FROM cycleDoctorat LIMIT 1");
             $stmt->execute();
-            return null;
-        }catch (PDOException $e) {
-            echo "Error: " . $e->getMessage();            
+            return $stmt->fetch(PDO::FETCH_ASSOC) ?: [
+                'nom' => 'Doctorat',
+                'code' => 'PHD',
+                'description' => 'Troisième cycle universitaire'
+            ];
+        } catch (PDOException $e) {
+            error_log("Erreur récupération doctorat: " . $e->getMessage());
+            return [
+                'nom' => 'Doctorat',
+                'code' => 'PHD',
+                'description' => 'Troisième cycle universitaire'
+            ];
+        }
+    }
+
+    public static function updateDoctorat($nom, $description) {
+        $conn = connectDB();
+        $conn->beginTransaction();
+        
+        try {
+            $exists = $conn->query("SELECT COUNT(*) FROM cycleDoctoratt")->fetchColumn() > 0;
+
+            if ($exists) {
+                $stmt = $conn->prepare("UPDATE cycleDoctorat SET nom = :nom, description = :description");
+            } else {
+                $stmt = $conn->prepare("INSERT INTO doctorat (nom, description, code) 
+                                      VALUES (:nom, :description, 'PHD')");
+            }
+
+            $stmt->execute([
+                ':nom' => trim($nom),
+                ':description' => trim($description)
+            ]);
+
+            $conn->commit();
+            return true;
+        } catch (PDOException $e) {
+            $conn->rollBack();
+            error_log("Erreur mise à jour doctorat: " . $e->getMessage());
+            throw new Exception("Erreur lors de la mise à jour du doctorat");
+        }
+    }
+
+    // ======================
+    // METHODES STATIQUES UTILITAIRES
+    // ======================
+
+    public static function getAll() {
+        $conn = connectDB();
+        try {
+            $stmt = $conn->prepare("SELECT * FROM specialite ORDER BY nom");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erreur récupération spécialités: " . $e->getMessage());
+            throw new Exception("Erreur lors de la récupération des spécialités");
+        }
+    }
+
+    public static function getById($id) {
+        $conn = connectDB();
+        try {
+            $stmt = $conn->prepare("SELECT * FROM specialite WHERE id = :id");
+            $stmt->execute([':id' => (int)$id]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erreur récupération spécialité: " . $e->getMessage());
+            throw new Exception("Erreur lors de la récupération de la spécialité");
+        }
+    }
+
+    public static function getDoctoratCourses() {
+        $conn = connectDB();
+        try {
+            $stmt = $conn->prepare("SELECT * FROM cycleDoctorat ORDER BY anneeDoctorat, codeEC");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            error_log("Erreur récupération cours doctorat: " . $e->getMessage());
+            throw new Exception("Erreur lors de la récupération des cours de doctorat");
         }
     }
     
-
-    public static  function get_courses_by_specialite ($id){
+    /**
+     * Met à jour un cours (spécialité normale)
+     * @param string $codeEC Code du cours
+     * @param string $intituleEC Intitulé du cours
+     * @param float $coef Coefficient
+     * @param int $cm Heures de CM
+     * @param int $td Heures de TD
+     * @param int $tp Heures de TP
+     * @param int $tpe Heures de TPE
+     * @param int $ccts Crédits CCTS
+     * @param int $id ID du cours
+     * @return int Nombre de lignes affectées
+     * @throws Exception Si erreur de base de données
+     */
+    public  function editCours($codeEC, $intituleEC, $coef, $cm, $td, $tp, $tpe, $ccts, $id) {
         $conn = connectDB();
-
-        try{
-            $stmt = $conn->prepare("SELECT * FROM cours WHERE specialite = :id ORDER BY id DESC");
-            $stmt->bindParam(':id', $id, PDO::PARAM_INT);
-            $stmt->execute();
-
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }catch(PDOException $e){
-            echo "Error: " . $e->getMessage();
+        $conn->beginTransaction();
+        try {
+            $stmt = $conn->prepare("UPDATE cours SET 
+                                  codeEC = :codeEC,
+                                  intituleEC = :intituleEC,
+                                  coef = :coef,
+                                  CM = :cm,
+                                  TD = :td,
+                                  TP = :tp,
+                                  TPE = :tpe,
+                                  CCTS = :ccts
+                                  WHERE id = :id");
+            
+            $stmt->execute([
+                ':codeEC' => trim($codeEC),
+                ':intituleEC' => trim($intituleEC),
+                ':coef' => (float)$coef,
+                ':cm' => (int)$cm,
+                ':td' => (int)$td,
+                ':tp' => (int)$tp,
+                ':tpe' => (int)$tpe,
+                ':ccts' => (int)$ccts,
+                ':id' => (int)$id
+            ]);
+            
+            $rowCount = $stmt->rowCount();
+            $conn->commit();
+            return $rowCount;
+        } catch (PDOException $e) {
+            $conn->rollBack();
+            error_log("Erreur mise à jour cours: " . $e->getMessage());
+            throw new Exception("Erreur lors de la mise à jour du cours");
         }
     }
+    
+    /**
+     * Supprime un cours (spécialité normale)
+     * @param int $id ID du cours à supprimer
+     * @return int Nombre de lignes affectées
+     * @throws Exception Si erreur de base de données
+     */
+    public static function deleteCourse($id) {
+        $conn = connectDB();
+        $conn->beginTransaction();
+        try {
+            $stmt = $conn->prepare("DELETE FROM cours WHERE id = :id");
+            $stmt->execute([':id' => (int)$id]);
+            $rowCount = $stmt->rowCount();
+            $conn->commit();
+            return $rowCount;
+        } catch (PDOException $e) {
+            $conn->rollBack();
+            error_log("Erreur suppression cours: " . $e->getMessage());
+            throw new Exception("Erreur lors de la suppression du cours");
+        }
+    }
+    
+    /**
+     * Met à jour un cours de doctorat
+     * @param int $id ID du cours
+     * @param string $codeEC Code du cours
+     * @param string $intituleEC Intitulé du cours
+     * @param int $creditEC Crédits ECTS
+     * @param string $anneeDoctorat Année du doctorat
+     * @return int Nombre de lignes affectées
+     * @throws Exception Si erreur de base de données
+     */
+    public static function editDoctoratCours($id, $codeEC, $intituleEC, $creditEC, $anneeDoctorat) {
+        $conn = connectDB();
+        $conn->beginTransaction();
+        try {
+            $stmt = $conn->prepare("UPDATE cycleDoctorat SET 
+                                  codeEC = :codeEC,
+                                  intituleEC = :intituleEC,
+                                  creditEC = :creditEC,
+                                  anneeDoctorat = :anneeDoctorat
+                                  WHERE id = :id");
+            
+            $stmt->execute([
+                ':id' => (int)$id,
+                ':codeEC' => trim($codeEC),
+                ':intituleEC' => trim($intituleEC),
+                ':creditEC' => (int)$creditEC,
+                ':anneeDoctorat' => trim($anneeDoctorat)
+            ]);
+            
+            $rowCount = $stmt->rowCount();
+            $conn->commit();
+            return $rowCount;
+        } catch (PDOException $e) {
+            $conn->rollBack();
+            error_log("Erreur mise à jour cours doctorat: " . $e->getMessage());
+            throw new Exception("Erreur lors de la mise à jour du cours de doctorat");
+        }
+    }
+    
+    /**
+     * Supprime un cours de doctorat
+     * @param int $id ID du cours à supprimer
+     * @return int Nombre de lignes affectées
+     * @throws Exception Si erreur de base de données
+     */
+    public static function deleteDoctoratCourse($id) {
+        $conn = connectDB();
+        $conn->beginTransaction();
+        try {
+            $stmt = $conn->prepare("DELETE FROM cycleDoctorat WHERE id = :id");
+            $stmt->execute([':id' => (int)$id]);
+            $rowCount = $stmt->rowCount();
+            $conn->commit();
+            return $rowCount;
+        } catch (PDOException $e) {
+            $conn->rollBack();
+            error_log("Erreur suppression cours doctorat: " . $e->getMessage());
+            throw new Exception("Erreur lors de la suppression du cours de doctorat");
+        }
+    }
+    // ======================
+    // GETTERS
+    // ======================
 
-
+    public function getId() { return $this->id; }
+    public function getName() { return $this->name; }
+    public function getDescription() { return $this->description; }
+    public function getCode() { return $this->code; }
 }
-?>
