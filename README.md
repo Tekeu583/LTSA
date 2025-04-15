@@ -4,6 +4,7 @@
  
  >* tout les frontend auront la meme structure que la page d'accueil a l'exception de la page login(se connecter)
 >* Le fichier index.php c'est pour le routage des pages et sa config n'est pas terminer
+>* cours et specialité terminer
 
 
 
