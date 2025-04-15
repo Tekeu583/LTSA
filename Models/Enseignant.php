@@ -57,6 +57,11 @@ class Enseignant{
             if($enseignant){
                 return false; // l'enseignant existe déjà
             }
+            $nom=htmlspecialchars(strip_tags($nom));
+            $grade=htmlspecialchars(strip_tags($grade));
+            $fonction=htmlspecialchars(strip_tags($fonction));
+            $lieuTravail=htmlspecialchars(strip_tags($lieuTravail));
+            $id_admin=htmlspecialchars(strip_tags($id_admin));
             $stmt = $conn->prepare("INSERT INTO enseignant (nom, grade, fonction, lieuTravail,id_admin,created_at) VALUES (:nom, :grade, :fonction, :lieuTravail,:id_admin,NOW())");
             $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
             $stmt->bindParam(':grade', $grade, PDO::PARAM_STR);
@@ -86,6 +91,11 @@ class Enseignant{
                 return false; // l'enseignant existe déjà
             }
             //modifier l'enseignant dans la base de données
+            $nom=htmlspecialchars(strip_tags($nom));
+            $grade=htmlspecialchars(strip_tags($grade));
+            $fonction=htmlspecialchars(strip_tags($fonction));
+            $lieuTravail=htmlspecialchars(strip_tags($lieuTravail));
+            $created_at=htmlspecialchars(strip_tags($created_at));
             $stmt = $conn->prepare("UPDATE enseignant SET nom = :nom, grade = :grade, fonction = :fonction, lieuTravail = :lieuTravail, created_at = :created_at  WHERE id =:id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);

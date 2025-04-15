@@ -69,7 +69,7 @@ if (!isset($_SESSION['token']) and !isset($_SESSION['id']) and !isset($_SESSION[
                         <label for="lieuTravail" class="label">lieu de travail</label>
                         <i class="fa-solid fa-location-dot"></i>
                     </div>
-                    <input type="hidden" name="id_admin" value="NULL">
+                    <input type="hidden" name="id_admin" value="<?=$_SESSION['id']?>">
                     <button type="submit" class="btn" >Ajouter</button>
                     <p id="message"></p>
                 </form>

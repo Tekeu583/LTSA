@@ -22,7 +22,7 @@ if (isset($_SESSION['token']) and isset($_SESSION['id']) and isset($_SESSION['no
     <div class="container justify-content-center align-items-center d-flex min-vh-100">
             <div class="login-box ">
                 <div class="retour left ml-2 mb-2">
-                    <a href="index.php"><i class="fas fa-arrow-left"></i></a>
+                    <a href="index.php?page=accueil"><i class="fas fa-arrow-left"></i></a>
                 </div>
                 <?php if (!empty($error)): ?>
                     <div class="alert alert-danger">
@@ -47,7 +47,7 @@ if (isset($_SESSION['token']) and isset($_SESSION['id']) and isset($_SESSION['no
                         <label for="pass" class="label">password</label>
                         <i class="fa-solid fa-lock"></i>
                     </div>
-                    <input type="hidden" name="token" id="token" value="<?php echo $_SESSION['token_csrf']; ?>">
+                    <input type="hidden" name="token" id="token" value="<?php echo @$_SESSION['token_csrf']; ?>">
                     <div class="remember-forgot">
                         <a href="index.php?page=login/reset">mot de passe oublié ?</a>
                     </div>

@@ -16,15 +16,6 @@
     height: 100vh;
     
 }
-/* .bg-admin{
-    max-height: 100vh;
-    background-image:url('../img/bg-form.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    width: 100vw;
-    height: 100vh;
-} */
 
 .login-box{
     position: relative;
@@ -71,7 +62,7 @@
     border: 1px solid rgba(255,255,255,0.1);
     outline: none;
     border-radius: 30px !important;
-    color: var(--text-white);
+    color: var(--text-black);
     font-size: 1em;
     transition: 0.3s;
 }
@@ -83,6 +74,17 @@
     color: var(--color-bleu-fonce);
     font-size: 18px;
     transition: 0.3s;
+}
+.input-group select{
+    background: var(--bg-input) !important;
+    color: #fff !important;
+    font-size: 1em;
+    height: 30px;
+}
+.input-group select option{
+    color: #fff !important;
+    font-size: 1em;
+    border-radius: 30px !important;
 }
 .fa-lock{
     cursor: pointer;
@@ -97,6 +99,7 @@
     transform: translateY(-50%);
     pointer-events: none;
     transition: 0.3s;
+    color: #fff;
 }
 .input-group input:focus~label,.input-group input:valid~label{
     top: -5px;

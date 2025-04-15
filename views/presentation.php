@@ -2,15 +2,13 @@
 ob_start();
 ?>
 
-<p>
-
 <style>
         /* ----- Section 1 : Bannière Hero ----- */
         .hero-banner {
             width: 100%;
             height: 50vh;
             background-color: #ddd;
-            background-image: url('labo.jpg');
+            background-image: url('public/img/labo.jpg');
             background-size: cover;
             background-position: center;
             margin-bottom: 3rem;
@@ -152,9 +150,32 @@ ob_start();
             background-color: #f8f9fa;
             font-weight: bold;
         }
+         /* Style du bouton */
+    .back-to-top-btn {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 30px;
+        height: 30px;
+        background-color: #064db8; /* Bleu Bootstrap */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 20px;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.5s;
+        z-index: 999;
+    }
+    
+    .back-to-top-btn.visible {
+        opacity: 1;
+    }
+    
+    .back-to-top-btn:hover {
+        background-color: #0b5ed7; /* Bleu plus foncé */
+    }
     </style>
-</head>
-<body>
     <!-- Section 1 : Bannière Hero -->
     <div class="hero-banner"></div>
     
@@ -223,7 +244,7 @@ ob_start();
                 
                 <h4 class="mt-4"><strong>👉 Cycle de doctorat</strong></h4>
                 <p>Etre titulaire d'un diplôme de master 2 recherche (équivalent du DEA dans l'ancien système) dans l'une des spécialités du laboratoire ou son équivalent.</p>
-        
+            </div>
         <!-- Section Pôles d'expertise -->
         <div class="section-block">
             <h2 class="section-title">Pôles d'expertise notre laboratoire</h2>
@@ -470,10 +491,10 @@ ob_start();
             <h2 class="section-title">Nos partenaires</h2>
             <div class="row">
                 <!-- Carte Partenaire 1 -->
-                <div class="col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
                     <div class="partner-card">
                         <div class="partner-img-container">
-                            <img src="ENSET_DLA.jpg" alt="ENSET Douala" class="partner-img">
+                            <img src="public/img/ENSET.png" alt="ENSET Douala" class="partner-img">
                         </div>
                         <div class="partner-title">
                             ECOLE NORMALE SUPERIEURE DE L'ENSEIGMENT TECHNIQUE DE DOUALA
@@ -482,10 +503,10 @@ ob_start();
                 </div>
                 
                 <!-- Carte Partenaire 2 -->
-                <div class="col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
                     <div class="partner-card">
                         <div class="partner-img-container">
-                            <img src="ENSPD.jpg" alt="ENSPD" class="partner-img">
+                            <img src="public/img/ENSPD.png" alt="ENSPD" class="partner-img">
                         </div>
                         <div class="partner-title">
                             ECOLE NORMALE SUPERIEURE POLYTECHNIQUE DE DOUALA
@@ -494,10 +515,10 @@ ob_start();
                 </div>
                 
                 <!-- Carte partenaire 3 -->
-                <div class="col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
                     <div class="partner-card">
                         <div class="partner-img-container">
-                            <img src="ESTLC_AMBAM.jpg" alt="ESTLC_AMBAM" class="partner-img">
+                            <img src="public/img/ESTLC.png" alt="ESTLC_AMBAM" class="partner-img">
                         </div>
                         <div class="partner-title">
                             ECOLE SUPERIEURE DE TRANSPORT ,LOGISTIQUE ET COMMERCE
@@ -506,10 +527,10 @@ ob_start();
                 </div>
 
                 <!-- Carte partenaire 4 -->
-                <div class="col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
                     <div class="partner-card">
                         <div class="partner-img-container">
-                            <img src="IBA_NKONSAMBA.jpg" alt="ESTLC_AMBAM" class="partner-img">
+                            <img src="public/img/ESTLC.png" alt="ESTLC_AMBAM" class="partner-img">
                         </div>
                         <div class="partner-title">
                             ECOLE SUPERIEURE DE TRANSPORT ,LOGISTIQUE ET COMMERCE
@@ -518,10 +539,10 @@ ob_start();
                 </div>
 
                 <!-- Carte partenaire 5 -->
-                <div class="col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
                     <div class="partner-card">
                         <div class="partner-img-container">
-                            <img src="IUT_DLA.png" alt="IUT_DLA" class="partner-img">
+                            <img src="public/img/IUT.png" alt="IUT_DLA" class="partner-img">
                         </div>
                         <div class="partner-title">
                             INSTITUT UNIVERSITAIRE DES TECHNOLOGIES DE DOUALA
@@ -530,10 +551,10 @@ ob_start();
                 </div>
 
                 <!-- Carte partenaire 6 -->
-                <div class="col-md-4">
+                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3">
                     <div class="partner-card">
                         <div class="partner-img-container">
-                            <img src="LOGO_UD.png" alt="LOGO_UD" class="partner-img">
+                            <img src="public/img/UD.png" alt="LOGO_UD" class="partner-img">
                         </div>
                         <div class="partner-title">
                             UNIVERSITE DE DOUALA
@@ -544,45 +565,12 @@ ob_start();
             </div>
         </div>
     </div>
-
+    <!-- Bouton "Retour en haut" -->
+    <button id="backToTop" class="back-to-top-btn" aria-label="Retour en haut">
+        ↑
+    </button>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
-
-<!-- Bouton "Retour en haut" -->
-<button id="backToTop" class="back-to-top-btn" aria-label="Retour en haut">
-    ↑
-</button>
-
-<style>
-    /* Style du bouton */
-    .back-to-top-btn {
-        position: fixed;
-        bottom: 30px;
-        right: 30px;
-        width: 30px;
-        height: 30px;
-        background-color: #064db8; /* Bleu Bootstrap */
-        color: white;
-        border: none;
-        border-radius: 5px;
-        font-size: 20px;
-        cursor: pointer;
-        opacity: 0;
-        transition: opacity 0.5s;
-        z-index: 999;
-    }
-    
-    .back-to-top-btn.visible {
-        opacity: 1;
-    }
-    
-    .back-to-top-btn:hover {
-        background-color: #0b5ed7; /* Bleu plus foncé */
-    }
-</style>
-
-<script>
+    <script>
     // Affiche/masque le bouton selon la position de scroll
     window.addEventListener('scroll', function() {
         const backToTopBtn = document.getElementById('backToTop');
@@ -601,9 +589,6 @@ ob_start();
         });
     });
 </script>
-
-</h1>
-
 <?php
 $content=ob_get_clean();
 require("template.php");

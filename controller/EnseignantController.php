@@ -14,7 +14,7 @@
         public function afficherEnseignant($id){
             session_start();
             if(!$_SESSION['nom'] || !$_SESSION['id']){
-                header("Location:index.php");
+                header("Location:index.php?page=accueil");
             }
             $enseignants= new Enseignant(); 
             $enseignant = $enseignants->getEnseignantById($id);
@@ -23,10 +23,6 @@
         }
         // afficher le formulaire d'ajout d'un enseignant
         public function ajoutEnseignant(){
-            session_start();
-            if(!$_SESSION['nom'] || !$_SESSION['id']){
-                header("Location:index.php");
-            }
             header("Location:views/admin/registerEnseignant.php");
         }
         //validation du formulaire d'ajout d'un enseignant
@@ -34,7 +30,7 @@
         public function ajoutEnseignantValidation(){
             session_start();
             if(!$_SESSION['nom'] || !$_SESSION['id']){
-                header("Location:index.php");
+                header("Location:index.php?page=accueil");
             }
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $error=[];
@@ -54,10 +50,14 @@
                      $error[]="vous devez indiquez un lieu de travail d'enseignant";
                     require_once(__DIR__."/../views/admin/registerEnseignant.php");
                 }
+                if(!isset($_POST['id_admin']) || empty($_POST['id_admin'])){
+                     $error[]="vous devez indiquez un id d'admin";
+                    require_once(__DIR__."/../views/admin/registerEnseignant.php");
+                }
                 $admin= new Admin();
                 $admin= $admin->getAdmins(); // recuperation d'un enseignant
                 $enseignant= new Enseignant();
-                $result=$enseignant->newEnseignant($_POST['nom'],$_POST['grade'],$_POST['fonction'],$_POST['lieuTravail'],$admin[0]['id']); //ajout d'un enseignant
+                $result=$enseignant->newEnseignant($_POST['nom'],$_POST['grade'],$_POST['fonction'],$_POST['lieuTravail'],$_POST['id_admin']); //ajout d'un enseignant
                 session_start();
                 $_SESSION['alert']=[
                     "type"=>"success",
@@ -90,7 +90,7 @@
         public function suppressionEnseignant($id){
             session_start();
             if(!$_SESSION['nom'] || !$_SESSION['id']){
-                header("Location:index.php");
+                header("Location:index.php?page=accueil");
             }
             $enseignant= new Enseignant();
             $result=$enseignant->supprimerEnseignant($id); //supression d'un enseignant
@@ -123,7 +123,7 @@
         public function modificationEnseignantValidation(){
             session_start();
             if(!$_SESSION['nom'] || !$_SESSION['id']){
-                header("Location:index.php");
+                header("Location:index.php?page=accueil");
             }
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $error=[];

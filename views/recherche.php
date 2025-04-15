@@ -19,6 +19,7 @@ ob_start();
         
         /* ----- Section 2 : Titres + flèche ----- */
         .research-header {
+            position: relative;
             margin-bottom: 3rem;
             padding-left: 1rem;
             color: #063882;
@@ -46,7 +47,7 @@ ob_start();
         }
         
         .subtitle {
-            display: inline-block;
+            display: inline;
             margin-left: 1rem;
             font-weight: bold;
         }
@@ -115,14 +116,14 @@ ob_start();
         <!-- Section 2 : Titres + flèche interactive -->
         <div class="research-header">
             <h2 class="main-title">Recherches</h2>
-            <div style="display: block;">
+            <div style="display: b;">
                 <h3 class="subtitle">Sujets de recherches</h3>
                 <div class="dropdown-arrow" id="dropdownArrow">→</div>
             </div>
-            
+         
             <!-- Menu déroulant cliquable -->
             <div class="title-dropdown" id="titleDropdown">
-                <a href="#vision" class="dropdown-item">Vision par ordinateur et reconnaissance des formes</a>
+                <a href="#vision" class="dropdown-item">Vision par ordinateur et <br>reconnaissance des formes</a>
                 <a href="#domaines" class="dropdown-item">Domaines de recherches</a>
                 <a href="#mecanique" class="dropdown-item">Mecanique</a>
                 <a href="#genigeo" classe="dropdown-item">Génie Civil et Géotechnologie</a>
@@ -130,8 +131,7 @@ ob_start();
                 <a href="#energetique" class="dropdown-item">Energetique</a>
             </div>
         </div>
-                </div>
-            </div>
+    </div>
             
          <!-- Section 1 - Vision et positionnement scientifique -->
 <!-- Section 1 - Vision et positionnement scientifique -->

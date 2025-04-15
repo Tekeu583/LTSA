@@ -21,12 +21,13 @@ class Admin{
             // Vérifier si l'email existe déjà
             if($admin){
                 return false; // l'email existe déjà
-            }else{
+            }else{         
+                //insérer l'administrateur dans la base de données
+                $nom=htmlspecialchars(strip_tags($nom));
+                $email=htmlspecialchars(strip_tags($email));
+                $motDePasse=htmlspecialchars(strip_tags($motDePasse));
                 //hacher le mot de passe
                 $motDePasse = password_hash($motDePasse, PASSWORD_DEFAULT);
-                
-            
-                //insérer l'administrateur dans la base de données
                 $stmt= $conn->prepare("INSERT INTO admin (nom, email, motDePasse,created_at) VALUES (:nom, :email, :motDePasse, NOW())");
                 $stmt->bindParam(':nom', $nom, PDO::PARAM_STR);
                 $stmt->bindParam(':email', $email, PDO::PARAM_STR);
@@ -53,6 +54,8 @@ class Admin{
             if($admin){
                 return false; // l'email existe déjà
             }
+            $nom=htmlspecialchars(strip_tags($nom));
+            $email=htmlspecialchars(strip_tags($email));
             //insérer l'administrateur dans la base de données
             $stmt= $conn->prepare("UPDATE admin SET nom = :nom, email = :email  WHERE id =:id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -154,13 +157,13 @@ class Admin{
         $conn = connectDB();
         try{
             //hacher le mot de passe
-            $stmt= $conn->prepare("UPDATE admin SET motDePasse = :motDePasse,token=NUL WHERE id =:id");
+            $stmt= $conn->prepare("UPDATE admin SET motDePasse = :motDePasse,token=NULL  WHERE id =:id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
             $stmt->bindParam(':motDePasse', $motDePasse, PDO::PARAM_STR);
             $stmt->execute();
             return true;     
         }catch (PDOException $e) {
-            return false;
+            return $e->getMessage();
         }
     }
     // Trouver un administrateur par email

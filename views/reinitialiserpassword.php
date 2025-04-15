@@ -27,6 +27,15 @@
                         </ul>
                     </div>
                 <?php endif; ?>
+                <?php if (!empty($success)): ?>
+                    <div class="alert alert-success">
+                        <ul class="mb-0">
+                            <?php foreach ($success as $succes): ?>
+                                <li><?php echo htmlspecialchars($succes);?></li>
+                            <?php endforeach; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
                 <div class="login-header">
                     <h2>Reinitialiser votre mot de passe</h2>
                 </div>

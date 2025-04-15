@@ -30,13 +30,13 @@
         public function deleteAdmin($id){
             session_start();
             if(!$_SESSION['nom'] || !$_SESSION['id']){
-                header("Location:index.php");
+                header("Location:index.php?page=accueil");
             }
             $error=[];
+            $success=[];
             $admin = new Admin();
             $admins=$admin->supprimerAdmin($id);
             if($admins){
-                session_start();
                 $_SESSION['alert']=[
                     "type"=>"success",
                     "msg"=>"suppression realiser"
@@ -60,7 +60,7 @@
         public function ajoutAdminValidation(){
             session_start();
             if(!$_SESSION['nom'] || !$_SESSION['id']){
-                header("Location:index.php");
+                header("Location:index.php?page=accueil");
             }
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $error=[];
@@ -111,7 +111,7 @@
                     "type"=>"error",
                     "msg"=>"Ajout echoue"
                 ];
-                $error="ajout echoué";
+                $error[]="ajout echoué";
                 require_once(__DIR__."/../views/admin/registerAdmin.php");
             }
         }
@@ -124,7 +124,7 @@
         public function validerModificationAdmin(){
             session_start();
             if(!$_SESSION['nom'] || !$_SESSION['id']){
-                header("Location:index.php");
+                header("Location:index.php?page=accueil");
             }
             if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $error=[];
@@ -216,12 +216,13 @@
                     }else{
                         $admin = new Admin();
                         $admins = $admin->getAdminByEmail($email);
+                        // Vérifier si l'administrateur existe
                         if(!$admins) {
                             $error[]="Email incorrect";
+                            echo "arrive non 0";
                             require_once __DIR__ . '/../views/login.php';
                         }else{
                             try{
-
                                 $result=$admin->connectAdmin($email,$motDePasse);
                                 if(!$result) {
                                     $error[]="Erreur de connexion faillie :mot de passe incorrect";
@@ -233,6 +234,7 @@
                                         $error[]="Erreur lors de la génération du token";
                                         require_once __DIR__ . '/../views/login.php';
                                     }else{
+                                        //session_start();
                                         $_SESSION['id']=$admins['id'];
                                         $_SESSION['nom']=$admins['nom'];
                                         $_SESSION['email']=$admins['email'];
@@ -240,22 +242,17 @@
                                         // Redirection vers la page d'accueil de l'administrateur
                                         header("Location:index.php?page=doctorant");
                                     }
-                                    
                                  
-                                    require_once __DIR__ . '/../views/login.php';
+                                    //require_once __DIR__ . '/../views/login.php';
                             }
                         }catch(Exception $e) {
                             $error[]="Erreur de connexion  : " . $e->getMessage();
-                            require_once __DIR__ . '/../views/login.php';
+                            //require_once __DIR__ . '/../views/login.php';
                             }  
                             
                         }  
                     }
                
-                }
-                if(!empty($error)){
-                    // Afficher les erreurs
-                    require_once __DIR__. ("/index.php?page=login");
                 }
             }
         }
@@ -264,7 +261,7 @@
             session_start();
             // Vérifier si l'utilisateur est connecté
             if (!isset($_SESSION['id'])) {
-                header('Location:/../index.php');
+                header("Location:index.php?page=accueil");
                 exit;
             }
             // Déconnexion de l'administrateur
@@ -287,6 +284,7 @@
             
             if ($_SERVER['REQUEST_METHOD'] === 'POST'){
                 $error=[];
+                $success=[];
                 // Vérifier si l'email est présent
                 if(!isset($_POST['email']) || empty($_POST['email'])){
                     $error[]="vous devez indiquez un email"; 
@@ -307,7 +305,7 @@
                 // Stocker le token dans la base de données
                 if($admin->stockToken($admins['id'],$token)) {
                     // URL de réinitialisation
-                    $resetUrl = $_SERVER['HTTP_ORIGIN'] . "/index.php?page=login/" . $token;
+                    $resetUrl = BASE_URL. "index.php?page=login/nouveauPassword/" . $token;
                     
                     // Envoyer l'email
                     $subject = 'Réinitialisation de votre mot de passe';
@@ -322,7 +320,7 @@
                     $resultat=$mails->sendEmail($admins['email'], $subject, $body);
                     // $resultat=Mail($admins['email'], $subject, $body);
                     if($resultat) {
-                        $error[]="Email de réinitialisation envoyé";
+                        $success[]="Email de réinitialisation envoyé";
                         require_once __DIR__.("/../views/reinitialiserpassword.php");
                     } else {
                         $error[]="Erreur lors de l'envoi de l'email: $resultat";
@@ -334,7 +332,11 @@
                 }
             }
         }
-
+        //redirection vers la page de reinitialisation du mot de passe
+        public function newpassword($tokens){
+            $token=$tokens;
+            require_once __DIR__."/../views/newPassword.php";
+        }
         // Méthode de réinitialisation de mot de passe
     public function resetPassword() {
         // Récupérer les données POST
@@ -350,20 +352,23 @@
             $motDePasse=password_hash($motDePasse,PASSWORD_DEFAULT);
             $admin = new Admin();
             $result=$admin->isValidResetToken($token);
-            // Vérifier si le token est valide
+            //Vérifier si le token est valide
             if(!$result) {
                 $error[]="Token invalide ou expiré";
                 require_once __DIR__.("/../views/login.php");
+            }else{
+                $test=$admin->modifierMotDePasse($result['id'],$motDePasse);
+                if($test) {
+                    $error[]="Mot de passe réinitialisé avec succès";
+                    require_once __DIR__.("/../views/login.php");
+                }else{
+                    $error[]="Erreur lors de la réinitialisation du mot de passe";
+                    require_once __DIR__.("/../views/login.php");
+                }
+
             }
+
             
-            // Mettre à jour le mot de passe
-            if($result->modifierMotDePasse($result['id'],$motDePasse)) {
-                $error[]="Mot de passe réinitialisé avec succès";
-                require_once __DIR__.("/../views/login.php");
-            } else {
-                $error[]="Erreur lors de la réinitialisation du mot de passe";
-                require_once __DIR__.("/../views/login.php");
-            }
         }
     }
 }
