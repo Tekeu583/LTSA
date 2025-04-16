@@ -57,8 +57,7 @@
         public function addAdmin(){
             header("Location:views/admin/registerAdmin.php");
         }
-        public function ajoutAdminValidation(){
-            session_start();
+        public function ajoutAdminValidation(){            
             // if(!$_SESSION['nom'] || !$_SESSION['id']){
             //     header("Location:index.php?page=accueil");
             // }
@@ -93,7 +92,7 @@
                     $admin= new Admin();
                     $result=$admin->newAdmin($nom,$email,$motDePasseHash);
                     if($result){
-                        session_start();
+                        
                         $_SESSION['alert']=[
                             "type"=>"success",
                             "msg"=>"Ajout realiser"
@@ -106,7 +105,7 @@
                 }
                 require_once __DIR__.("/../views/admin/registerAdmin.php");
             }else{
-                session_start();
+                
                 $_SESSION['alert']=[
                     "type"=>"error",
                     "msg"=>"Ajout echoue"
@@ -121,8 +120,7 @@
             
             require_once __DIR__."/../views/admin/modifierAdmin.php";
         }
-        public function validerModificationAdmin(){
-            session_start();
+        public function validerModificationAdmin(){            
             // if(!$_SESSION['nom'] || !$_SESSION['id']){
             //     header("Location:index.php?page=accueil");
             // }
@@ -185,8 +183,7 @@
        
         //valider la connexion
         public function validerlogin() {
-            // Récupérer les données POST
-            session_start();
+            // Récupérer les données POST            
             if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
                 $error=[];
@@ -225,7 +222,7 @@
                             try{
                                 $result=$admin->connectAdmin($email,$motDePasse);
                                 if(!$result) {
-                                    $error[]="Erreur de connexion faillie :mot de passe incorrect";
+                                    $error[]="Erreur de connexion  :mot de passe incorrect";
                                     require_once __DIR__ . '/../views/login.php';
                                 }else{
                                     // stoker le token jwt dans la base de données

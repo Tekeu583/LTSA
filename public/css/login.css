@@ -129,7 +129,7 @@
     text-decoration: underline;
     color: #6b3fff;
 }
-.btn{
+.btne{
     width: 100%;
     padding: 18px;
     background: linear-gradient(45deg,var(--color-vert),var(--color-bleu-fonce));

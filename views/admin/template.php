@@ -1,5 +1,6 @@
 <?php
-define('URL', 'http://localhost/projet ltsa/ltsa/');
+
+define('URL', 'http://localhost:8070/');
 // if (!isset($_SESSION['token']) and !isset($_SESSION['id']) and !isset($_SESSION['nom'])) {
 //     //redirectionner vers la page d'accueil du visiteur;
 //     header("Location:index.php?page=accueil");
@@ -25,6 +26,7 @@ $currentPage = $_GET['page'] ?? '';
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
 
     <!-- custom css -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="icon" href="public/img/LTSA.png" type="image/png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -51,7 +53,7 @@ $currentPage = $_GET['page'] ?? '';
     <a href="index.php" class="nav-link">Accueil</a>
     <a href="<?= URL ?>index.php?page=doctorant"class="nav-link <?= $currentPage === 'doctorant' ? 'active-link' : '' ?>" >Doctorants</a>
     <a href="<?= URL ?>index.php?page=enseignant" class="nav-link <?= $currentPage === 'enseignant' ? 'active-link' : '' ?>">Enseignants</a>
-    <a href="<?= URL ?>views/admin/specialite?id=doctorat" class="nav-link <?= $currentPage === 'specialites' ? 'active-link' : '' ?>">Cours/ Specialitées</a>
+    <a href="<?= URL ?>index.php?page=admin/specialite&id=doctorat" class="nav-link <?= $currentPage === 'admin/specialite' ? 'active-link' : '' ?>">Cours/ Specialitées</a>
     <a href="<?= URL ?>index.php?page=publications" class="nav-link <?= $currentPage === 'publications' ? 'active-link' : '' ?>">Publications</a>
     <a href="<?= URL ?>index.php?page=actualites" class="nav-link <?= $currentPage === 'actualites' ? 'active-link' : '' ?>">Actualités</a>
     <a href="<?= URL ?>index.php?page=contact/message" class="nav-link <?= $currentPage === 'message' ? 'active-link' : '' ?>">Messages</a>
@@ -69,7 +71,7 @@ $currentPage = $_GET['page'] ?? '';
             <div class="text-center h3">Laboratoire de Technologies <br>et des Sciences Appliquées</div>
             <div class="logo2  right"><img src="public/img/IUT.png" alt=""></div>
         </div>
-        <p class="col text-right"><span class="text-success"><?= $salutation ,$_SESSION['nom']?></span> et bienvenue sur la page admin !</p>
+        <p class="col text-right"><span class="text-success"><?= $salutation , $_SESSION['nom']?></span> et bienvenue sur la page admin !</p>
         <div class="container">
           <?= $content ?>
         </div>

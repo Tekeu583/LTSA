@@ -37,7 +37,7 @@ class SpecialiteController {
                 $isDoctorat = false;
             }
 
-            require_once 'views/admin/specialite.php';
+            require_once __DIR__ . "/../views/admin/specialite.php";
         } catch (Exception $e) {
             $_SESSION['error'] = "Erreur lors du chargement : " . $e->getMessage();
             require_once 'views/admin/specialite.php';
@@ -67,7 +67,7 @@ class SpecialiteController {
             $id = Specialite::create($nom, $description, $code);
             
             $_SESSION['success'] = "Spécialité créée avec succès";
-            header("Location: /admin/specialite?id=" . $id);
+            header("Location: /index.php?page=admin/specialite&id=" . $id);
             exit;
         } catch (Exception $e) {
             $_SESSION['error'] = $e->getMessage();
@@ -100,7 +100,7 @@ class SpecialiteController {
             $_SESSION['error'] = $e->getMessage();
         }
 
-        header("Location: /admin/specialite?id=" . $id);
+        header("Location: /index.php?page=admin/specialite&id=" . $id);
         exit;
     }
 
@@ -143,7 +143,7 @@ class SpecialiteController {
         } catch (Exception $e) {
             $_SESSION['error'] = $e->getMessage();
             $id = $isDoctorat ? 'doctorat' : $specialite_id;
-            header("Location: /admin/specialite?id=" . $id);
+            header("Location: /index.php?page=admin/specialite&id=" . $id);
             exit;
         }
     }
@@ -163,7 +163,7 @@ class SpecialiteController {
         );
 
         $_SESSION['success'] = "Cours ajouté avec succès";
-        header("Location: /admin/specialite?id=" . $specialite_id);
+        header("Location: /index.php?page=admin/specialite&id=" . $specialite_id);
         exit;
     }
 
@@ -177,21 +177,21 @@ class SpecialiteController {
                 trim($_POST['anneeDoctorat'])
             );
             $_SESSION['success'] = 'Cours de doctorat ajouté avec succès';
-            header("Location: /admin/specialite?id=doctorat");
+            header("Location: /index.php?page=admin/specialite&id=doctorat");
             exit;
         }catch(Exception $e){
             $_SESSION["error"] = $e->getMessage();
             echo $e->getMessage();
-            header("Location: /admin/specialite?id=doctorat");
+            header("Location: /index.php?page=admin/specialite&id=doctorat");
         }
 
-        header("Location: /admin/specialite?id=doctorat");
+        header("Location: /index.php?page=admin/specialite&id=doctorat");
         exit;
     }
 
     public function updateCours() {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header("Location: /admin/specialite?id=".$_GET['id']);
+            header("Location: /index.php?page=admin/specialite&id=".$_GET['id']);
             exit;
         }
 
@@ -206,7 +206,7 @@ class SpecialiteController {
         } catch (Exception $e) {
             $_SESSION['error'] = $e->getMessage();
             $id = $isDoctorat ? 'doctorat' : $_POST['specialite_id'];
-            header('Location: /admin/specialite?id=' . $id);
+            header('Location: /index.php?page=admin/specialite&id=' . $id);
             exit;
         }
     }
@@ -233,7 +233,7 @@ class SpecialiteController {
             $_SESSION['error'] = "Aucune modification effectuée";
         }
         
-        header("Location: /admin/specialite?id=" . $_POST['specialite_id']);
+        header("Location: /index.php?page=admin/specialite&id=" . $_POST['specialite_id']);
         exit;
     }
 
@@ -259,7 +259,7 @@ class SpecialiteController {
             
             $conn->commit();
             $_SESSION['success'] = "Cours de doctorat mis à jour avec succès";
-            header("Location: /admin/specialite?id=doctorat");
+            header("Location: /index.php?page=admin/specialite&id=doctorat");
             exit;
         } catch (PDOException $e) {
             $conn->rollBack();
@@ -284,7 +284,7 @@ class SpecialiteController {
         } catch (Exception $e) {
             $_SESSION['error'] = $e->getMessage();
             $id = $isDoctorat ? 'doctorat' : $_POST['specialite_id'];
-            header("Location: /admin/specialite?id=" . $id);
+            header("Location: /index.php?page=admin/specialite&id=" . $id);
             exit;
         }
     }
@@ -296,7 +296,7 @@ class SpecialiteController {
         $specialite->deleteCourse((int)$_POST['cours_id']);
         
         $_SESSION['success'] = "Cours supprimé avec succès";
-        header("Location: /admin/specialite?id=" . $_POST['specialite_id']);
+        header("Location: /index.php?page=admin/specialite&id=" . $_POST['specialite_id']);
         exit;
     }
 
@@ -310,7 +310,7 @@ class SpecialiteController {
             
             $conn->commit();
             $_SESSION['success'] = "Cours de doctorat supprimé avec succès";
-            header("Location: /admin/specialite?id=doctorat");
+            header("Location: /index.php?page=admin/specialite&id=doctorat");
             exit;
         } catch (PDOException $e) {
             $conn->rollBack();
@@ -324,7 +324,7 @@ class SpecialiteController {
 
     public function updateDoctorat() {
         if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
-            header("Location: /admin/specialite?id=doctorat");
+            header("Location: /index.php?page=admin/specialite&id=doctorat");
             exit;
         }
 
@@ -344,7 +344,25 @@ class SpecialiteController {
             
         }
 
-        header("Location: /admin/specialite?id=doctorat");
+        header("Location: /index.php?page=admin/specialite&id=doctorat");
         exit;
+    }
+    public function handleSpecialite($controller) {
+        $action = $_POST['action'] ?? $_GET['action'] ?? '';
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            match ($action) {
+                'addSpecialite'      => $controller->addSpecialite(),
+                'editSpecialite'     => $controller->updateSpecialite(),
+                'delspecialite'      => $controller->deleteSpecialite(getIntParam("id")),
+                'addCours'           => $controller->addCours(),
+                'editcours'          => $controller->updateSpecialiteCours(),
+                'delcours'           => $controller->deleteCours(),
+                'addCoursDoctorat'   => $controller->addDoctoratCours(),
+                'editDoctoratCours'  => $controller->updateDoctoratCours(),
+                'delDoctoratCours'   => $controller->deleteDoctoratCours(),
+                default              => null,
+            };
+            redirect('/?page=admin/specialite&id=' . ($_GET['id'] ?? '1'));
+        }
     }
 }

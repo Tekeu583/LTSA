@@ -1,5 +1,5 @@
 <?php
-define('URL', 'http://localhost/projet ltsa/ltsa/');
+define('URL', 'http://localhost:8070/');
 $activePage=$_GET['page'] ?? '';
 ?>
 <!DOCTYPE html>

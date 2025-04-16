@@ -1,7 +1,5 @@
 <?php
 ob_start();
-session_start();
-$page_title = "Cours par spécialité";
 ?>
 
 <div class="row p-3">
@@ -43,14 +41,14 @@ $page_title = "Cours par spécialité";
                     <?php foreach ((is_array($specialites) ? $specialites : []) as $specialite): ?>
                         <?php $active = (isset($_GET['id']) && $_GET['id'] == $specialite['id']) ? 'active fw-bold text-warning' : 'text-white'; ?>
                         <li class="nav-item">
-                            <a class="nav-link <?= $active ?> px-3 py-2" href="specialite?id=<?= $specialite['id'] ?>">
+                            <a class="nav-link <?= $active ?> px-3 py-2" href="index.php?page=admin/specialite&id=<?= $specialite['id'] ?>">
                                 <?= htmlspecialchars($specialite['code']) ?>
                             </a>
                         </li>
                     <?php endforeach; ?>
                     <li class="nav-item">
                         <a class="nav-link <?= isset($_GET['id']) && $_GET['id'] == 'doctorat' ? 'active fw-bold text-warning' : 'text-white' ?> px-3 py-2" 
-                           href="/admin/specialite?id=doctorat">
+                           href="index.php?page=admin/specialite&id=doctorat">
                             Cycle Doctorat
                         </a>
                     </li>
@@ -58,7 +56,7 @@ $page_title = "Cours par spécialité";
             </div>
 
             <!-- Boutons d'actions -->
-            <div class="d-flex gap-2">
+            <div class="d-flex gap-2 sm:mt-2">
                 <button class="btn btn-outline-warning" data-bs-toggle="modal" data-bs-target="#editSpecialiteModal">
                     <i class="bi bi-pencil-square"></i> Modifier
                 </button>
@@ -211,7 +209,7 @@ $page_title = "Cours par spécialité";
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/admin/specialite">
+                    <form method="POST" action="index.php?page=admin/specialite">
                         <input type="hidden" name="action" value="addSpecialite">
                         <div class="mb-3">
                             <label for="nom" class="form-label">Nom de la spécialité</label>
@@ -267,7 +265,7 @@ $page_title = "Cours par spécialité";
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                     </div>
                     <div class="modal-body">
-                        <form method="POST" action="/admin/specialite">
+                        <form method="POST" action="index.php?page=admin/specialite">
                             <input type="hidden" name="action" value="<?= $isDoctorat ? 'editDoctorat' : 'editSpecialite' ?>">
                             <input type="hidden" name="id" value="<?= htmlspecialchars($specialiteToEdit['id']) ?>">
 
@@ -312,7 +310,7 @@ $page_title = "Cours par spécialité";
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form action="/admin/specialite" method="post">
+                    <form action="index.php?page=admin/specialite" method="post">
                         <h4>Confirmer la suppression de la spécialité <span class="text-info"><?= htmlspecialchars($spec) ?></span></h4>
                         <input type="hidden" name="action" value="delspecialite">
                         <hr>                    
@@ -335,7 +333,7 @@ $page_title = "Cours par spécialité";
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fermer"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/admin/specialite">
+                    <form method="POST" action="index.php?page=admin/specialite">
                         <input type="hidden" name="action" value="<?= $isDoctorat ? 'addCoursDoctorat' : 'addCours' ?>">
                         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                         <input type="hidden" name="id_specialite" value="<?= htmlspecialchars($id) ?>">
@@ -400,7 +398,7 @@ $page_title = "Cours par spécialité";
                     <button type="button" class="btn-close btn-danger" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="/admin/specialite">
+                    <form method="POST" action="index.php?page=admin/specialite">
                         <input type="hidden" name="action" value="<?= $isDoctorat ? 'editcoursDoctorat' : 'editcours' ?>">
                         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                         <input type="hidden" id="edit_cours_id" name="cours_id" value="">
@@ -468,7 +466,7 @@ $page_title = "Cours par spécialité";
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form action="/admin/specialite" method="post">
+                    <form action="index.php?page=admin/specialite" method="post">
                         <input type="hidden" name="action" value="<?= $isDoctorat ? 'delCoursDoctorat' : 'delcours' ?>">
                         <input type="hidden" name="csrf_token" value="<?= $_SESSION['csrf_token'] ?>">
                         <input type="hidden" name="cours_id" id="cours_id" value="">
@@ -565,5 +563,5 @@ document.addEventListener('DOMContentLoaded', function() {
 <?php
 $titre = "specialite";
 $content=ob_get_clean();
-require("template.php");
+require "template.php";
 ?>
