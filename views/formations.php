@@ -3,7 +3,7 @@ ob_start();
 ?>
 
     <!-- Titre de la page Formations --> 
-    <div class="d-flex justify-content-center align-items-center">
+    <div class="d-flex justify-content-center align-items-center mt-3">
         <div class="d-flex justify-content-center align-items-center" style="width: 376px; height: 87px; background-color: #FFB523;">
             <p class="d-flex justify-content-center align-items-center m-0" style="width: 262px; height: 45px; background-color: #FEFEFF;opacity:90%;font-size: 20px; font-weight: bold;font-style:italic">
             Formations
@@ -13,15 +13,15 @@ ob_start();
 
     <!-- Description des formations du LTSA -->
     <div class=" mt-3 ml-5">
-        <p class="fs-5" style="font-family: 'Times New Roman', Times, serif;font-size:18px">
+        <p class="fs-5 ms-5" style="font-family: 'Times New Roman', Times, serif;font-size:18px;">
          Nous proposons des programmes de formation avancée dans deux parcours principaux :
         </p>
         <div class="d-flex flex-column">
-            <p class="align-items-center">
-            <span class="d-inline-block bg-warning rounded-circle me-2" style="width: 10px; height: 10px;"></span>
+            <p class="align-items-center ms-5">
+            <span class="d-inline-block bg-warning rounded-circle me-2 " style="width: 10px; height: 10px;"></span>
             <strong>Master 2 Recherche</strong>, une préparation intensive d'un an (60 crédits).
             </p>
-            <p class="align-items-center">
+            <p class="align-items-center ms-5">
             <span class="d-inline-block bg-warning rounded-circle me-2" style="width: 10px; height: 10px;"></span>
             <strong>Doctorat/PhD</strong>, un programme de recherche en trois ans (180 crédits).
             </p>
@@ -29,23 +29,23 @@ ob_start();
     </div>
 
     <div class=" ml-5 ">
-        <p class="fs-5" style="font-family: 'Times New Roman', Times, serif;font-size:18px">
+        <p class="fs-5 ms-5" style="font-family: 'Times New Roman', Times, serif;font-size:18px">
          Ces formations mettent l’accent sur quatre (04) grandes spécialités :
         </p>
         <div class="d-flex flex-column">
             <p class="align-items-center">
-            <span class="d-inline-block bg-warning rounded-circle me-2" style="width: 10px; height: 10px;"></span>
+            <span class="d-inline-block bg-warning rounded-circle me-2 ms-5" style="width: 10px; height: 10px;"></span>
             <strong>Énergétique</strong>
             </p>
             <p class="align-items-center">
-            <span class="d-inline-block bg-warning rounded-circle me-2" style="width: 10px; height: 10px;"></span>
+            <span class="d-inline-block bg-warning rounded-circle me-2 ms-5" style="width: 10px; height: 10px;"></span>
             <strong>Mécanique</strong>
             </p>
             <p class="align-items-center">
-            <span class="d-inline-block bg-warning rounded-circle me-2" style="width: 10px; height: 10px;"></span>
+            <span class="d-inline-block bg-warning rounded-circle me-2 ms-5" style="width: 10px; height: 10px;"></span>
             <strong>Génie Civil et Géotechnologie</strong>
             </p>
-            <p class="align-items-center">
+            <p class="align-items-center ms-5">
             <span class="d-inline-block bg-warning rounded-circle me-2" style="width: 10px; height: 10px;"></span>
             <strong>Électronique, Électrotechnique, Automatique et Télécommunications</strong>
             </p>
@@ -90,7 +90,7 @@ ob_start();
 <div class=" my-0"style="background-color: #F2F2FC;">
 <div class="row g-3 justify-content-center">
     <div class="col-12 col-md-4">
-        <div class="border-secondary ml-3 p-4 mt-3 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
+        <div class="border-secondary  p-4 mt-3 mb-3" style="background-color:rgb(236, 240, 243); font-family: sans-serif;border-radius: 50px;">
             <p><span style="font-weight: bold; font-family: inter;color: #2E3092">Traitement de signal</span></p>
         <div class="text-start"> 
             Crédit : 3<br>
@@ -758,19 +758,19 @@ ob_start();
 
     <!-- Première année de doctorat -->
     <div class=" ml-5">
-        <p class="fs-5" style="font-family: 'Times New Roman', Times, serif; font-size: 20px;">
+        <p class="fs-5 ms-5" style="font-family: 'Times New Roman', Times, serif; font-size: 20px;">
         <strong> Première année de doctorat</strong>
         </p>
         <div class="d-flex flex-column">
-            <p class="align-items-center" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
+            <p class="align-items-center ms-5" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
             <span class="d-inline-block bg-warning rounded-circle me-2" style="width: 10px; height: 10px;"></span>
             L’étudiant(e) doit participer minimum à 3 séminaires (national ou international) durant cette période. Chaque séminaire compte pour 5 crédits.
             </p>
-            <p class="align-items-center" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
+            <p class="align-items-center ms-5" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
             <span class="d-inline-block bg-warning rounded-circle me-2" style="width: 10px; height: 10px;"></span>
             L ’étudiant(e) devrait faire un rapport de synthèse de chaque séminaire, et y ajouter les documents justifiants sa présence au séminaire.
             </p>
-            <p class="align-items-center" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
+            <p class="align-items-center ms-5" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
             <span class="d-inline-block bg-warning rounded-circle me-2" style="width: 10px; height: 10px;"></span>
             L’étudiant(e) doit participer aux enseignements de recherche méthodologie en présentiel afin de faire une revue de la littérature de leur thème de recherche. La  recherche méthodologique correspond à 5 crédits répartis comme suit :<br>
             -        l’enseignement propre dit ;<br>
@@ -782,20 +782,20 @@ ob_start();
 
      <!-- Deuxieme année de doctorat -->
     <div class=" ml-5">
-        <p class="fs-5" style="font-family: 'Times New Roman', Times, serif; font-size: 20px;">
+        <p class="fs-5 ms-5" style="font-family: 'Times New Roman', Times, serif; font-size: 20px;">
         <strong> Deuxieme année de doctorat</strong>
         </p>
         <div class="d-flex flex-column">
-            <p class="align-items-center" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
+            <p class="align-items-center ms-5" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
             <span class="d-inline-block bg-warning rounded-circle me-2" style="width: 10px; height: 10px;"></span>
             L’étudiant(e) doit participer au moins à un colloque/conférence (national ou international) dans le domaine de sa thèse et publier un acte de colloque/conférence, ce qui compte pour 5 crédits. L’acte de colloque/conférence doit obligatoirement être issu de sa thèse.
             </p>
-            <p class="align-items-center" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
+            <p class="align-items-center ms-5" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
             <span class="d-inline-block bg-warning rounded-circle me-2" style="width: 10px; height: 10px;"></span>
             L’étudiant(e) doit publier un article (minimum) dans un journal scientifique, ce qui compte pour 10 crédits. L’article doit obligatoirement être issu de sa  thèse.
             Il est important de noter que l’acte de colloque/conférence et/ou l’article doit être indexé SCOPUS, c'est-à-dire faire partir des colloque/conférence et/ou  journaux reconnu par SCOPUS (www.scopus.com).
             </p>
-            <p class="align-items-center" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
+            <p class="align-items-center ms-5" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
             <span class="d-inline-block bg-warning rounded-circle me-2" style="width: 10px; height: 10px;"></span>
             Le tutorat se fait en l’absence du /des directeur(s) de thèse et avec un jury de 3 membres donc l’un est président. Le tutorat compte pour 15 crédits.
             </p>      
@@ -804,11 +804,11 @@ ob_start();
 
       <!-- Troisième année de doctorat -->
     <div class=" ml-5">
-        <p class="fs-5" style="font-family: 'Times New Roman', Times, serif; font-size: 20px;">
+        <p class="fs-5 ms-5" style="font-family: 'Times New Roman', Times, serif; font-size: 20px;">
         <strong> Troisième année de doctorat</strong>
         </p>
         <div class="d-flex flex-column">
-            <p class="align-items-center" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
+            <p class="align-items-center ms-5" style="font-family: 'Times New Roman', Times, serif; font-size: 18px;">
             <span class="d-inline-block bg-warning rounded-circle me-2" style="width: 10px; height: 10px;"></span>
             Hormis les procédures administratives, la troisième année de doctorat est consacrée à la rédaction est à la soutenance de la thèse de doctorat de l’étudiant(e), soit 120 crédits.
             </p>
@@ -826,7 +826,7 @@ ob_start();
     <div class="row g-3 justify-content-center align-items-stretch">
         <div class="col-12 col-md-4 d-flex">
             <div class="border border-secondary ml-3 p-4 mb-3 w-100 d-flex flex-column justify-content-center" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-                <p><span class="text-primary fw-bold" style="font-family: 'Times New Roman', Times, serif;font-weight:bold;font-size: 20px;">CYCLE DE MASTER 2 RECHERCHE</span></p>
+                <p><span class="text-primary fw-bold ms-5" style="font-family: 'Times New Roman', Times, serif;font-weight:bold;font-size: 20px;">CYCLE DE MASTER 2 RECHERCHE</span></p>
                 <p>
                     Être titulaire d’un niveau de master 1 (équivalent de la maîtrise dans l’ancien système) en mathématique, physique. <br>
                     Être titulaire d’un diplôme d’ingénieur, PLET, PLEG. <br>
@@ -836,7 +836,7 @@ ob_start();
         </div>
         <div class="col-12 col-md-4 offset-md-1 d-flex">
             <div class="border border-secondary ml-3 p-4 mb-3 w-100 d-flex flex-column justify-content-center" style="background-color: #F2F2FC; font-family: sans-serif; border-radius: 50px;">
-                <p><span class="text-primary fw-bold"style="font-family: 'Times New Roman', Times, serif;font-weight:bold; font-size: 20px;">CYCLE DE DOCTORAT</span></p>
+                <p><span class="text-primary fw-bold ms-5"style="font-family: 'Times New Roman', Times, serif;font-weight:bold; font-size: 20px;">CYCLE DE DOCTORAT</span></p>
                 <p>
                     Être titulaire d’un diplôme de master 2 recherche (équivalent du DEA dans l’ancien système) dans l’une des spécialités du laboratoire ou son équivalent.
                 </p>
